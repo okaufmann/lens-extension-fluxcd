@@ -1,5 +1,5 @@
 {
-  "name": "@okaufmann/lens-extension-fluxcd",
+  "name": "lens-extension-fluxcd",
   "version": "1.0.0",
   "description": "Lens extension for FluxCD",
   "contributors": [

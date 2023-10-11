@@ -23,11 +23,11 @@ Events
 
 ## Install
 
-To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `okaufmann/lens-extension-fluxcd`.
+To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `lens-extension-fluxcd`.
 
 or
 
-Click on the following link `lens://app/extensions/install/okaufmann/lens-extension-fluxcd`
+Click on the following link [lens://app/extensions/install/lens-extension-fluxcd](lens://app/extensions/install/lens-extension-fluxcd)
 
 ## Development
 

@@ -28,7 +28,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
     return (
       <KubeObjectListLayout
         tableId="helmReleasesTable"
-        className="HelmReleasesReports" store={helmReleaseStore}
+        className="HelmReleases" store={helmReleaseStore}
         sortingCallbacks={{
           [sortBy.name]: (helmRelease: HelmRelease) => helmRelease.getName(),
           [sortBy.namespace]: (helmRelease: HelmRelease) => helmRelease.getNs(),
@@ -38,7 +38,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
         searchFilters={[
           (helmRelease: HelmRelease) => helmRelease.getSearchFields()
         ]}
-        renderHeaderTitle="HelmReleases"
+        renderHeaderTitle="Helm Releases"
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
@@ -46,7 +46,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           {title: "Status", className: "status", sortBy: sortBy.status},
         ]}
         renderTableContents={(helmRelease: HelmRelease) => [
-          helmRelease.getName(), //renderName(report.getName()),
+          helmRelease.getName(),
           helmRelease.getNs(),
           this.renderStatus(helmRelease),
           getStatusMessage(helmRelease),

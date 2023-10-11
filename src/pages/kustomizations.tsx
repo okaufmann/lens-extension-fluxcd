@@ -28,7 +28,7 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
     return (
       <KubeObjectListLayout
         tableId="kustomizationsTable"
-        className="KustomizationsReports" store={kustomizationStore}
+        className="Kustomizations" store={kustomizationStore}
         sortingCallbacks={{
           [sortBy.name]: (kustomization: Kustomization) => kustomization.getName(),
           [sortBy.namespace]: (kustomization: Kustomization) => kustomization.getNs(),
@@ -46,7 +46,7 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           {title: "Status", className: "status", sortBy: sortBy.status},
         ]}
         renderTableContents={(kustomization: Kustomization) => [
-          kustomization.getName(), //renderName(report.getName()),
+          kustomization.getName(),
           kustomization.getNs(),
           this.renderStatus(kustomization),
           getStatusMessage(kustomization),

@@ -1,9 +1,8 @@
 import { Renderer } from '@k8slens/extensions'
-import { makeObservable } from 'mobx';
 
 import { observer } from 'mobx-react';
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { helmReleaseStore, HelmRelease } from '../k8s/fluxcd/helmrelease'
 import { getStatusClass, getStatusMessage, getStatusText } from '../utils';
@@ -15,23 +14,15 @@ const {
   }
 } = Renderer;
 
-interface FluxCDHelmReleasesState {
-  helmReleases: HelmRelease[]
-}
-
 enum sortBy {
   name = "name",
   namespace = "namespace",
   status = "status",
   ready = "ready",
-  // high = "high",
-  // medium = "medium",
-  // low = "low",
-  // unknown = "unknown",
 }
 
 @observer
-export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.LensExtension }, FluxCDHelmReleasesState> {
+export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.LensExtension }> {
 
   render() {
     return (
@@ -67,10 +58,8 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
   renderStatus(helmRelease: HelmRelease) {
     const className = getStatusClass(helmRelease)
     const text = getStatusText(helmRelease)
-    console.log({ helmRelease})
     return (
       <Badge key="name" label={text} className={className}/>
     )
   }
-
 }

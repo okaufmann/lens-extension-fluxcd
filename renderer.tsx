@@ -8,12 +8,14 @@ import { FluxCDHelmReleases } from './src/pages/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
 import { FluxCDGitRepositories } from './src/pages/gitrepositories'
 import { FluxCDHelmRepositories } from './src/pages/helmrepositories'
+import { FluxCDImageRepositories } from './src/pages/imagerepositories'
 import { FluxCDBuckets } from './src/pages/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
 import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";
 import { gitRepositoryApi } from "./src/k8s/fluxcd/gitrepository";
 import { helmRepositoryApi } from "./src/k8s/fluxcd/helmrepository";
+import { imageRepositoryApi } from "./src/k8s/fluxcd/imagerepository";
 import { helmChartApi } from "./src/k8s/fluxcd/helmchart";
 import { bucketApi } from "./src/k8s/fluxcd/bucket";
 
@@ -36,6 +38,7 @@ const fluxcdObjects = [
   { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: helmChartApi },
   { kind: "HelmRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: helmRepositoryApi },
   { kind: "Bucket", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: bucketApi },
+  { kind: "ImageRepository", apiVersions: ["image.toolkit.fluxcd.io/v1beta2"], api: imageRepositoryApi },
 ]
 
 export default class FluxCDExtension extends Renderer.LensExtension {
@@ -80,9 +83,21 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
+      id: "imagerepositories",
+      components: {
+        Page: () => <FluxCDHelmRepositories extension={this} />,
+      }
+    },
+    {
       id: "buckets",
       components: {
         Page: () => <FluxCDBuckets extension={this} />,
+      }
+    },
+    {
+      id: "imagerepositories",
+      components: {
+        Page: () => <FluxCDImageRepositories extension={this} />,
       }
     }
   ]
@@ -144,6 +159,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "sources",
       target: { pageId: "helmrepositories" },
       title: "Helm Repositories",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "imagerepositories",
+      parentId: "sources",
+      target: { pageId: "imagerepositories" },
+      title: "Image Repositories",
       components: {
         Icon: null as any,
       }

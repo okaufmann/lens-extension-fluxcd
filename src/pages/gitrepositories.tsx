@@ -50,8 +50,8 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
         ]}
         renderTableContents={(gitRepository: GitRepository) => [
           gitRepository.getName(),
-          gitRepository.spec.url,
           gitRepository.getNs(),
+          gitRepository.spec.url,
           this.renderStatus(gitRepository),
           getStatusMessage(gitRepository),
         ]}

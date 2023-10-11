@@ -23,7 +23,7 @@ Events
 
 ## Install
 
-To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `@appvia/lens-extension-fluxcd`.
+To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `okaufmann/lens-extension-fluxcd`.
 
 or
 
@@ -35,7 +35,7 @@ To install the extension for development
 
 ```sh
 mkdir -p ~/.k8slens/extensions
-git clone https://github.com/appvia/lens-extension-fluxcd.git
+git clone https://github.com/okaufmann/lens-extension-fluxcd.git
 ln -s $(pwd) ~/.k8slens/extensions/lens-extension-fluxcd
 ```
 

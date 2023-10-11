@@ -1,12 +1,13 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { Kustomization } from "../k8s/fluxcd/kustomization";
+import { getStatusClass, getStatusText } from "../utils";
 
 interface KustomizationDetailsState {
   events: Renderer.K8sApi.KubeEvent[]
 }
 
-const { Component: { DrawerItem } } = Renderer
+const { Component: { DrawerItem, Badge } } = Renderer
 
 export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>, KustomizationDetailsState> {
   public readonly state: Readonly<KustomizationDetailsState> = {
@@ -29,7 +30,9 @@ export class FluxCDKustomizationDetails extends React.Component<Renderer.Compone
         <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
         <DrawerItem name="Prune">{object.spec.prune === true ? 'Yes' : 'No'}</DrawerItem>
         <DrawerItem name="Last Applied Revision">{object.status.lastAppliedRevision}</DrawerItem>
-        <DrawerItem name="Ready">{object.status?.conditions.find((s: any) => s.type === "Ready").status}</DrawerItem>
+        <DrawerItem name="Ready">
+          <Badge className={getStatusClass(object)} label={getStatusText(object)} />
+        </DrawerItem>
         <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
         <DrawerItem name="Version">{object.metadata.resourceVersion}</DrawerItem>
         <DrawerItem name="UID">{object.metadata.uid}</DrawerItem>

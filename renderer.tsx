@@ -78,7 +78,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       id: "helmreleases",
       parentId: "fluxcd",
       target: { pageId: "helmreleases" },
-      title: "HelmReleases",
+      title: "Helm Releases",
       components: {
         Icon: null as any,
       }

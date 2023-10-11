@@ -62,7 +62,7 @@ npm run build
 If you want to watch for any source code changes and automatically rebuild the extension you can use:
 
 ```sh
-npm run dev
+npm run start
 ```
 
 ## Test

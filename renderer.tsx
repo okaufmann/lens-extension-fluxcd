@@ -12,42 +12,6 @@ import { helmRepositoryApi } from "./src/k8s/fluxcd/helmrepository";
 import { helmChartApi } from "./src/k8s/fluxcd/helmchart";
 import { bucketApi } from "./src/k8s/fluxcd/bucket";
 
-// export class FluxCDAppExtension extends Main.LensExtension {
-//   appMenus = [
-//     {
-//       parentId: "help",
-//       label: "Example item",
-//       click() {
-//         Main.Navigation.navigate("https://k8slens.dev");
-//       }
-//     }
-//   ]
-
-//   trayMenus = [
-//     {
-//       label: "My links",
-//       submenu: [
-//         {
-//           label: "Lens",
-//           click() {
-//             Main.Navigation.navigate("https://k8slens.dev");
-//           }
-//         },
-//         {
-//           type: "separator"
-//         },
-//         {
-//           label: "Lens Github",
-//           click() {
-//             Main.Navigation.navigate("https://github.com/lensapp/lens");
-//           }
-//         }
-//       ]
-//     }
-//   ]
-
-// }
-
 const {
   Component: {
     Icon,

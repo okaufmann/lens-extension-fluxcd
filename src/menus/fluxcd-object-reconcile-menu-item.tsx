@@ -3,11 +3,9 @@ import { Renderer } from "@k8slens/extensions";
 
 const {
   Component: {
-    terminalStore,
     MenuItem,
     Icon,
   },
-  Navigation,
 } = Renderer;
 
 export interface FluxcdObjectReconcileMenuItemProps extends Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.KubeObject> {

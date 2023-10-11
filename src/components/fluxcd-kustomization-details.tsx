@@ -6,7 +6,7 @@ interface KustomizationDetailsState {
   events: Renderer.K8sApi.KubeEvent[]
 }
 
-const { Component: { DrawerItem, KubeEventDetails } } = Renderer
+const { Component: { DrawerItem } } = Renderer
 
 export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>, KustomizationDetailsState> {
   public readonly state: Readonly<KustomizationDetailsState> = {

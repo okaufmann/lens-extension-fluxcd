@@ -2,10 +2,8 @@ import { Renderer } from '@k8slens/extensions'
 
 const { KubeApi } = Renderer.K8sApi;
 
-type Pod = Renderer.K8sApi.Pod;
 const KubeObject = Renderer.K8sApi.KubeObject;
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore;
-
 
 export class Kustomization extends KubeObject {
   static readonly kind = "Kustomization";

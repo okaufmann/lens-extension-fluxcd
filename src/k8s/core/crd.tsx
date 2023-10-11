@@ -2,7 +2,6 @@ import { Renderer } from '@k8slens/extensions'
 
 const { KubeApi } = Renderer.K8sApi;
 
-const KubeObject = Renderer.K8sApi.KubeObject;
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore;
 
 type CustomResourceDefinition = Renderer.K8sApi.CustomResourceDefinition

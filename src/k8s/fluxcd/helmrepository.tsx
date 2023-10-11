@@ -5,7 +5,6 @@ const { KubeApi } = Renderer.K8sApi;
 const KubeObject = Renderer.K8sApi.KubeObject;
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore;
 
-
 export class HelmRepository extends KubeObject {
   static readonly kind = "HelmRepository";
   static readonly namespaced = true;

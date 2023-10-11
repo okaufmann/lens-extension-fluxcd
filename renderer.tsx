@@ -7,6 +7,7 @@ import { FluxCDDashboard } from './src/pages/dashboard'
 import { FluxCDHelmReleases } from './src/pages/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
 import { FluxCDGitRepositories } from './src/pages/gitrepositories'
+import { FluxCDHelmRepositories } from './src/pages/helmrepositories'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
 import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";
@@ -70,6 +71,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       components: {
         Page: () => <FluxCDGitRepositories extension={this} />,
       }
+    },
+    {
+      id: "helmrepositories",
+      components: {
+        Page: () => <FluxCDHelmRepositories extension={this} />,
+      }
     }
   ]
 
@@ -121,6 +128,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "sources",
       target: { pageId: "gitrepositories" },
       title: "Git Repositories",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "helmrepositories",
+      parentId: "sources",
+      target: { pageId: "helmrepositories" },
+      title: "Helm Repositories",
       components: {
         Icon: null as any,
       }

@@ -3,7 +3,7 @@ import { KubeEvent } from '@k8slens/extensions/dist/src/common/k8s-api/endpoints
 import { PieChart } from '../components/pie-chart'
 
 import React, { useEffect, useState } from "react";
-const { Component: { Tooltip, DrawerItem } } = Renderer;
+const { Component: { Tooltip, KubeObjectListLayout, } } = Renderer;
 
 class FluxEventsStore extends Renderer.K8sApi.KubeObjectStore<Renderer.K8sApi.KubeEvent> {
   api = Renderer.K8sApi.eventApi;
@@ -153,8 +153,9 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
           {this.getChart('Buckets', bucketStore.items)}
         </div>
 
-        <h2>Applications</h2>
-        <div className='grid flex gaps mb-3 FluxPanels'>
+        {/* <h2>Applications</h2> */}
+
+        {/* <div className='grid flex gaps mb-3 FluxPanels'>
           {kustomizationStore.items.map(k => (<div className={['fluxPanel', 'column', getStatusClassName(k)].join(' ')}>
             <header>
               <h3>
@@ -192,10 +193,10 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
               </article>
             </div>))
           }
-        </div >
+        </div > */}
 
-        <h2>Sources</h2>
-        <div className='grid flex gaps mb-3 FluxPanels'>
+        {/* <h2>Sources</h2> */}
+        {/* <div className='grid flex gaps mb-3 FluxPanels'>
           {gitRepositoryStore.items.map(s => (<div className={['fluxPanel', 'column', getStatusClassName(s)].join(' ')}>
             <header>
               <h3><a onClick={e => {
@@ -253,9 +254,9 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
             </article>
           </div>))
           }
-        </div>
+        </div> */}
 
-        <Renderer.Component.KubeObjectListLayout
+        <KubeObjectListLayout
           className="Events" store={fluxEventsStore}
           tableProps={{
             sortSyncWithUrl: false,
@@ -352,7 +353,7 @@ export function KubeEventAge(props: { timestamp: number }): React.ReactElement {
 }
 
 const FluxTypes = [
-  { kind: "Kustomization", apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "Kustomization", apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2", "kustomize.toolkit.fluxcd.io/v1"] },
   { kind: "HelmRelease", apiVersions: ["helm.toolkit.fluxcd.io/v2beta1"] },
   { kind: "GitRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
   { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },

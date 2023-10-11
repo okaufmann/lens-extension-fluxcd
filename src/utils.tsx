@@ -1,4 +1,5 @@
 import moment from "moment";
+import { HelmRelease } from "./k8s/fluxcd/helmrelease";
 
 /**
  * This function formats durations in a more human readable form.
@@ -83,4 +84,48 @@ function getMeaningfulValues(values: number[], suffixes: string[], separator = "
     .filter(([dur]) => dur > 0)
     .map(([dur, suf]) => dur + suf)
     .join(separator);
+}
+
+export  function getStatusClass(obj: HelmRelease) {
+  const status = getStatus(obj)
+  switch (status) {
+  case 'ready':
+    return 'success';
+  case 'not-ready':
+    return 'error';
+  case 'suspended':
+    return 'info';
+  case 'in-progress':
+    return 'warning';
+  default:
+    return '';
+  }
+}
+
+export function getStatusText(obj: HelmRelease): string {
+  const status = getStatus(obj)
+  switch (status) {
+  case 'ready':
+    return 'Ready';
+  case 'not-ready':
+    return 'Error';
+  case 'suspended':
+    return 'Suspended';
+  case 'in-progress':
+    return 'In Progress';
+  default:
+    return 'unknown';
+  }
+}
+
+export function getStatusMessage(obj: HelmRelease): string {
+  return obj.status?.conditions
+    .find((c: any) => c.type === "Ready")?.message || 'unknown';
+}
+
+function getStatus(obj: HelmRelease) {
+  if (obj.spec.suspend) return 'suspended';
+  if (obj.status?.conditions.find((c: any) => c.type === "Ready").status === "True") return 'ready';
+  if (obj.status?.conditions.find((c: any) => c.type === "Ready").status === "False") return 'not-ready';
+  return 'in-progress';
 }

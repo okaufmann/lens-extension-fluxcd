@@ -5,6 +5,7 @@ import { FluxcdObjectReconcileMenuItem, FluxcdObjectReconcileMenuItemProps } fro
 import { FluxcdObjectSuspendResumeMenuItem, FluxCdObjectSuspendResumeMenuItemProps } from "./src/menus/fluxcd-object-suspend-resume-menu-item";
 import { FluxCDDashboard } from './src/pages/dashboard'
 import { FluxCDHelmReleases } from './src/pages/helmreleases'
+import { FluxCDKustomizations } from './src/pages/kustomizations'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
 import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";
@@ -47,6 +48,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       components: {
         Page: () => <FluxCDHelmReleases extension={this} />,
       }
+    },
+    {
+      id: "kustomizations",
+      components: {
+        Page: () => <FluxCDKustomizations extension={this} />,
+      }
     }
   ]
 
@@ -72,6 +79,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "fluxcd",
       target: { pageId: "helmreleases" },
       title: "HelmReleases",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "kustomizations",
+      parentId: "fluxcd",
+      target: { pageId: "kustomizations" },
+      title: "Kustomizations",
       components: {
         Icon: null as any,
       }

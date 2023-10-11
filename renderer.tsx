@@ -64,6 +64,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       components: {
         Page: () => <FluxCDKustomizations extension={this} />,
       }
+    },
+    {
+      id: "gitrepositories",
+      components: {
+        Page: () => <FluxCDGitRepositories extension={this} />,
+      }
     }
   ]
 
@@ -98,6 +104,23 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "fluxcd",
       target: { pageId: "kustomizations" },
       title: "Kustomizations",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "sources",
+      parentId: "fluxcd",
+      title: "Sources",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "gitrepositories",
+      parentId: "sources",
+      target: { pageId: "gitrepositories" },
+      title: "Git Repositories",
       components: {
         Icon: null as any,
       }

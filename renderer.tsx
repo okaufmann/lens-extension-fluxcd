@@ -4,6 +4,7 @@ import React from "react"
 import { FluxcdObjectReconcileMenuItem, FluxcdObjectReconcileMenuItemProps } from "./src/menus/fluxcd-object-reconcile-menu-item";
 import { FluxcdObjectSuspendResumeMenuItem, FluxCdObjectSuspendResumeMenuItemProps } from "./src/menus/fluxcd-object-suspend-resume-menu-item";
 import { FluxCDDashboard } from './src/pages/fluxcd-dashboard'
+import { FluxCDHelmReleases } from './src/pages/fluxcd-helmreleases'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
 import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";
@@ -36,8 +37,8 @@ export default class FluxCDExtension extends Renderer.LensExtension {
 
   clusterPages = [
     {
-      id: "fluxcd", // optional
-      exact: true, // optional
+      id: "fluxcd",
+      exact: true,
       components: {
         Page: () => <FluxCDDashboard extension={this} />,
       }

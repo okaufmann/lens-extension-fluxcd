@@ -20,6 +20,7 @@ enum sortBy {
   namespace = "namespace",
   status = "status",
   ready = "ready",
+  age = "age",
 }
 
 @observer
@@ -36,6 +37,7 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
           [sortBy.url]: (gitRepository: GitRepository) => gitRepository.spec.url,
           [sortBy.ready]: (gitRepository: GitRepository) => getStatusText(gitRepository),
           [sortBy.status]: (gitRepository: GitRepository) => getStatusMessage(gitRepository),
+          [sortBy.age]: (gitRepository: GitRepository) => gitRepository.getAge()
         }}
         searchFilters={[
           (gitRepository: GitRepository) => gitRepository.getSearchFields()
@@ -47,6 +49,7 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
           {title: "Url", className: "url", sortBy: sortBy.url},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
           {title: "Status", className: "status", sortBy: sortBy.status},
+          {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
         renderTableContents={(gitRepository: GitRepository) => [
           gitRepository.getName(),
@@ -54,6 +57,7 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
           gitRepository.spec.url,
           this.renderStatus(gitRepository),
           getStatusMessage(gitRepository),
+          gitRepository.getAge(),
         ]}
       />
     )

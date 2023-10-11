@@ -19,6 +19,7 @@ enum sortBy {
   namespace = "namespace",
   status = "status",
   ready = "ready",
+  age = "age",
 }
 
 @observer
@@ -34,6 +35,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           [sortBy.namespace]: (helmRelease: HelmRelease) => helmRelease.getNs(),
           [sortBy.ready]: (helmRelease: HelmRelease) => getStatusText(helmRelease),
           [sortBy.status]: (helmRelease: HelmRelease) => getStatusMessage(helmRelease),
+          [sortBy.age]: (helmRelease: HelmRelease) => helmRelease.getAge()
         }}
         searchFilters={[
           (helmRelease: HelmRelease) => helmRelease.getSearchFields()
@@ -44,12 +46,14 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
           {title: "Status", className: "status", sortBy: sortBy.status},
+          {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
         renderTableContents={(helmRelease: HelmRelease) => [
           helmRelease.getName(),
           helmRelease.getNs(),
           this.renderStatus(helmRelease),
           getStatusMessage(helmRelease),
+          helmRelease.getAge(),
         ]}
       />
     )

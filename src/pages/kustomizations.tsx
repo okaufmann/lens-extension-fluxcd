@@ -19,6 +19,7 @@ enum sortBy {
   namespace = "namespace",
   status = "status",
   ready = "ready",
+  age = "age",
 }
 
 @observer
@@ -34,6 +35,7 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           [sortBy.namespace]: (kustomization: Kustomization) => kustomization.getNs(),
           [sortBy.ready]: (kustomization: Kustomization) => getStatusText(kustomization),
           [sortBy.status]: (kustomization: Kustomization) => getStatusMessage(kustomization),
+          [sortBy.age]: (kustomization: Kustomization) => kustomization.getAge(),
         }}
         searchFilters={[
           (kustomization: Kustomization) => kustomization.getSearchFields()
@@ -44,12 +46,14 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
           {title: "Status", className: "status", sortBy: sortBy.status},
+          {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
         renderTableContents={(kustomization: Kustomization) => [
           kustomization.getName(),
           kustomization.getNs(),
           this.renderStatus(kustomization),
           getStatusMessage(kustomization),
+          kustomization.getAge(),
         ]}
       />
     )

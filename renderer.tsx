@@ -13,6 +13,9 @@ import { FluxCDOCIRepositories } from './src/pages/sources/ocirepositories'
 import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
 import { FluxCDImagePolicies } from './src/pages/imageautomation/imagepolicies'
 import { FluxCDImageUpdateAutomations } from './src/pages/imageautomation/imageupdateautomations'
+import { FluxCDAlerts } from './src/pages/notifications/alerts'
+import { FluxCDProviders } from './src/pages/notifications/providers'
+import { FluxCDReceivers } from './src/pages/notifications/receivers'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
@@ -126,6 +129,24 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       id: "imagerepositories",
       components: {
         Page: () => <FluxCDImageRepositories extension={this} />,
+      }
+    },
+    {
+      id: "alerts",
+      components: {
+        Page: () => <FluxCDAlerts extension={this} />,
+      }
+    },
+    {
+      id: "providers",
+      components: {
+        Page: () => <FluxCDProviders extension={this} />,
+      }
+    },
+    {
+      id: "receivers",
+      components: {
+        Page: () => <FluxCDReceivers extension={this} />,
       }
     }
   ]
@@ -257,6 +278,41 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "imageautomation",
       target: { pageId: "imageupdateautomations" },
       title: "Image Update Automations",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "notifications",
+      parentId: "fluxcd",
+      title: "Notifications",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "alerts",
+      parentId: "notifications",
+      target: { pageId: "alerts" },
+      title: "Alerts",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "providers",
+      parentId: "notifications",
+      target: { pageId: "providers" },
+      title: "Providers",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "receivers",
+      parentId: "notifications",
+      target: { pageId: "receivers" },
+      title: "Receivers",
       components: {
         Icon: null as any,
       }

@@ -23,6 +23,8 @@ import { Kustomization } from './src/k8s/fluxcd/kustomization'
 import { Receiver } from "./src/k8s/fluxcd/notifications/receiver";
 import { fluxcdObjects } from "./src/k8s/fluxcd/objects";
 
+import svgIcon from './src/icons/fluxcd.svg';
+
 const {
   Component: {
     Icon,
@@ -32,10 +34,8 @@ const {
 type IconProps = Renderer.Component.IconProps;
 
 export function FluxCDIcon(props: IconProps) {
-  return <Icon {...props} material="pages" />;
+  return <Icon {...props} svg={svgIcon} />;
 }
-
-
 
 export default class FluxCDExtension extends Renderer.LensExtension {
   kubeObjectDetailItems = [

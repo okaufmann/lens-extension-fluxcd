@@ -18,19 +18,10 @@ import { FluxCDProviders } from './src/pages/notifications/providers'
 import { FluxCDReceivers } from './src/pages/notifications/receivers'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
-import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
-import { helmReleaseApi } from "./src/k8s/fluxcd/helm/helmrelease";
-import { gitRepositoryApi } from "./src/k8s/fluxcd/sources/gitrepository";
-import { helmRepositoryApi } from "./src/k8s/fluxcd/sources/helmrepository";
-import { imageRepositoryApi } from "./src/k8s/fluxcd/image-automation/imagerepository";
-import { helmChartApi } from "./src/k8s/fluxcd/sources/helmchart";
-import { bucketApi } from "./src/k8s/fluxcd/sources/bucket";
-import { ociRepositoryApi } from "./src/k8s/fluxcd/sources/ocirepository";
-import { imagePolicyApi } from "./src/k8s/fluxcd/image-automation/imagepolicy";
-import { imageUpdateAutomationApi } from "./src/k8s/fluxcd/image-automation/imageupdateautomation";
-import { alertApi } from "./src/k8s/fluxcd/notifications/alert";
-import { receiverApi } from "./src/k8s/fluxcd/notifications/receiver";
-import { providerApi } from "./src/k8s/fluxcd/notifications/provider";
+import { FluxCDReceiverDetails } from './src/components/fluxcd-receiver-details'
+import { Kustomization } from './src/k8s/fluxcd/kustomization'
+import { Receiver } from "./src/k8s/fluxcd/notifications/receiver";
+import { fluxcdObjects } from "./src/k8s/fluxcd/objects";
 
 const {
   Component: {
@@ -44,31 +35,27 @@ export function FluxCDIcon(props: IconProps) {
   return <Icon {...props} material="pages" />;
 }
 
-const fluxcdObjects = [
-  { kind: "Kustomization", apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2", "kustomize.toolkit.fluxcd.io/v1"], api: kustomizationApi },
-  { kind: "HelmRelease", apiVersions: ["helm.toolkit.fluxcd.io/v2beta1"], api: helmReleaseApi },
-  { kind: "GitRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: gitRepositoryApi },
-  { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: helmChartApi },
-  { kind: "HelmRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: helmRepositoryApi },
-  { kind: "Bucket", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: bucketApi },
-  { kind: "OCIRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: ociRepositoryApi },
-  { kind: "ImageRepository", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imageRepositoryApi },
-  { kind: "ImagePolicy", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imagePolicyApi, suspend: false },
-  { kind: "ImageUpdateAutomation", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imageUpdateAutomationApi },
-  { kind: "Alert", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: alertApi },
-  { kind: "Provider", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: providerApi, suspend: false },
-  { kind: "Receiver", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: receiverApi },
-]
+
 
 export default class FluxCDExtension extends Renderer.LensExtension {
-  kubeObjectDetailItems = [{
-    kind: "Kustomization",
-    apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2", "kustomize.toolkit.fluxcd.io/v1"],
-    priority: 10,
-    components: {
-      Details: (props: Renderer.Component.KubeObjectDetailsProps<Kustomization>) => <FluxCDKustomizationDetails {...props} />
+  kubeObjectDetailItems = [
+    {
+      kind: "Kustomization",
+      apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2", "kustomize.toolkit.fluxcd.io/v1"],
+      priority: 10,
+      components: {
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Kustomization>) => <FluxCDKustomizationDetails {...props} />
+      }
+    },
+    {
+      kind: "Receiver",
+      apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"],
+      priority: 10,
+      components: {
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDReceiverDetails {...props} />
+      }
     }
-  }]
+  ]
 
   clusterPages = [
     {

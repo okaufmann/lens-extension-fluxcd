@@ -8,7 +8,7 @@ const KubeObjectStore = Renderer.K8sApi.KubeObjectStore;
 export class OCIRepository extends KubeObject {
   static readonly kind = "OCIRepository";
   static readonly namespaced = true;
-  static readonly apiBase = "/apis/source.toolkit.fluxcd.io/v1beta1/oicrepositories";
+  static readonly apiBase = "/apis/source.toolkit.fluxcd.io/v1beta2/ocirepositories";
 }
 
 export class OCIRepositoryApi extends KubeApi<OCIRepository> {

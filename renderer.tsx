@@ -248,7 +248,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
-      id: "imageautomation",
+      id: "imageautomations",
       parentId: "fluxcd",
       title: "Image Automation",
       components: {
@@ -257,7 +257,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
     },
     {
       id: "imagerepositories",
-      parentId: "imageautomation",
+      parentId: "imageautomations",
       target: { pageId: "imagerepositories" },
       title: "Image Repositories",
       components: {
@@ -266,7 +266,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
     },
     {
       id: "imagepolicies",
-      parentId: "imageautomation",
+      parentId: "imageautomations",
       target: { pageId: "imagepolicies" },
       title: "Image Policies",
       components: {
@@ -275,7 +275,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
     },
     {
       id: "imageupdateautomations",
-      parentId: "imageautomation",
+      parentId: "imageautomations",
       target: { pageId: "imageupdateautomations" },
       title: "Image Update Automations",
       components: {

@@ -8,6 +8,7 @@ import { FluxCDHelmReleases } from './src/pages/sources/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
 import { FluxCDGitRepositories } from './src/pages/sources/gitrepositories'
 import { FluxCDHelmRepositories } from './src/pages/sources/helmrepositories'
+import { FluxCDHelmCharts } from './src/pages/sources/helmcharts'
 import { FluxCDOCIRepositories } from './src/pages/sources/ocirepositories'
 import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
@@ -133,19 +134,27 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
-      id: "helmreleases",
+      id: "kustomizations",
       parentId: "fluxcd",
-      target: { pageId: "helmreleases" },
-      title: "Helm Releases",
+      target: { pageId: "kustomizations" },
+      title: "Kustomizations",
       components: {
         Icon: null as any,
       }
     },
     {
-      id: "kustomizations",
+      id: "helm",
       parentId: "fluxcd",
-      target: { pageId: "kustomizations" },
-      title: "Kustomizations",
+      title: "Helm",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "helmreleases",
+      parentId: "helm",
+      target: { pageId: "helmreleases" },
+      title: "Helm Releases",
       components: {
         Icon: null as any,
       }

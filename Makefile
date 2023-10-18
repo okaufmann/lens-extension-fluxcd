@@ -3,3 +3,6 @@ install-deps:
 
 build: install-deps
 	npm run build
+
+publish: build
+	npm publish

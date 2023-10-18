@@ -20,6 +20,7 @@ enum sortBy {
   status = "status",
   ready = "ready",
   age = "age",
+  type = "type",
 }
 
 @observer
@@ -33,6 +34,7 @@ export class FluxCDProviders extends React.Component<{ extension: Renderer.LensE
         sortingCallbacks={{
           [sortBy.name]: (provider: Provider) => provider.getName(),
           [sortBy.namespace]: (provider: Provider) => provider.getNs(),
+          [sortBy.type]: (provider: Provider) => provider.spec.type,
           [sortBy.ready]: (provider: Provider) => getStatusText(provider),
           [sortBy.status]: (provider: Provider) => getStatusMessage(provider),
           [sortBy.age]: (provider: Provider) => provider.getAge(true, true, true),
@@ -44,6 +46,7 @@ export class FluxCDProviders extends React.Component<{ extension: Renderer.LensE
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
+          {title: "Type", className: "type", sortBy: sortBy.type},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
           {title: "Status", className: "status", sortBy: sortBy.status},
           {title: "Age", className: "age", sortBy: sortBy.age},
@@ -51,6 +54,7 @@ export class FluxCDProviders extends React.Component<{ extension: Renderer.LensE
         renderTableContents={(provider: Provider) => [
           provider.getName(),
           provider.getNs(),
+          provider.spec.type,
           this.renderStatus(provider),
           getStatusMessage(provider),
           provider.getAge(),

@@ -20,6 +20,7 @@ enum sortBy {
   status = "status",
   ready = "ready",
   age = "age",
+  type = "type",
 }
 
 @observer
@@ -33,6 +34,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
         sortingCallbacks={{
           [sortBy.name]: (receiver: Receiver) => receiver.getName(),
           [sortBy.namespace]: (receiver: Receiver) => receiver.getNs(),
+          [sortBy.type]: (receiver: Receiver) => receiver.spec.type,
           [sortBy.ready]: (receiver: Receiver) => getStatusText(receiver),
           [sortBy.status]: (receiver: Receiver) => getStatusMessage(receiver),
           [sortBy.age]: (receiver: Receiver) => receiver.getAge(true, true, true),
@@ -44,6 +46,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
+          {title: "Type", className: "type", sortBy: sortBy.type},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
           {title: "Status", className: "status", sortBy: sortBy.status},
           {title: "Age", className: "age", sortBy: sortBy.age},
@@ -51,6 +54,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
         renderTableContents={(receiver: Receiver) => [
           receiver.getName(),
           receiver.getNs(),
+          receiver.spec.type,
           this.renderStatus(receiver),
           getStatusMessage(receiver),
           receiver.getAge(),

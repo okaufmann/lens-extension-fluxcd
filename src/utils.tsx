@@ -1,5 +1,5 @@
 import moment from "moment";
-import { HelmRelease } from "./k8s/fluxcd/helmrelease";
+import { HelmRelease } from "./k8s/fluxcd/helm/helmrelease";
 
 /**
  * This function formats durations in a more human readable form.

@@ -39,8 +39,6 @@ export class FluxCDKustomizationDetails extends React.Component<Renderer.Compone
 
     return (
       <div>
-        <DrawerItem name="Name">{object.metadata.name}</DrawerItem>
-        <DrawerItem name="Namespace">{object.metadata.namespace}</DrawerItem>
         <DrawerItem name="Source">
           <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}

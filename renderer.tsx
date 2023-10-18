@@ -8,6 +8,7 @@ import { FluxCDHelmReleases } from './src/pages/sources/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
 import { FluxCDGitRepositories } from './src/pages/sources/gitrepositories'
 import { FluxCDHelmRepositories } from './src/pages/sources/helmrepositories'
+import { FluxCDOCIRepositories } from './src/pages/sources/ocirepositories'
 import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
@@ -80,6 +81,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       id: "helmrepositories",
       components: {
         Page: () => <FluxCDHelmRepositories extension={this} />,
+      }
+    },
+    {
+      id: "ocirepositories",
+      components: {
+        Page: () => <FluxCDOCIRepositories extension={this} />,
       }
     },
     {
@@ -173,6 +180,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
+      id: "ocirepositories",
+      parentId: "sources",
+      target: { pageId: "ocirepositories" },
+      title: "OCI Repositories",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
       id: "imageautomation",
       parentId: "fluxcd",
       title: "Image Automation",
@@ -190,6 +206,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
 
+    // add every crd from notifications (alerts, receiver and providers)
   ]
 
   kubeObjectMenuItems =

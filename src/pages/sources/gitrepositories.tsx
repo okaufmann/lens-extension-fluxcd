@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { gitRepositoryStore, GitRepository } from '../../k8s/fluxcd/gitrepository'
+import { gitRepositoryStore, GitRepository } from '../../k8s/fluxcd/sources/gitrepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

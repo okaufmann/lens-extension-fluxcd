@@ -14,12 +14,12 @@ import { FluxCDImageRepositories } from './src/pages/imageautomation/imagereposi
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
-import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";
-import { gitRepositoryApi } from "./src/k8s/fluxcd/gitrepository";
-import { helmRepositoryApi } from "./src/k8s/fluxcd/helmrepository";
-import { imageRepositoryApi } from "./src/k8s/fluxcd/imagerepository";
-import { helmChartApi } from "./src/k8s/fluxcd/helmchart";
-import { bucketApi } from "./src/k8s/fluxcd/bucket";
+import { helmReleaseApi } from "./src/k8s/fluxcd/helm/helmrelease";
+import { gitRepositoryApi } from "./src/k8s/fluxcd/sources/gitrepository";
+import { helmRepositoryApi } from "./src/k8s/fluxcd/sources/helmrepository";
+import { imageRepositoryApi } from "./src/k8s/fluxcd/image-automation/imagerepository";
+import { helmChartApi } from "./src/k8s/fluxcd/sources/helmchart";
+import { bucketApi } from "./src/k8s/fluxcd/sources/bucket";
 
 const {
   Component: {

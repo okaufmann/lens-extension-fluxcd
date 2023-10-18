@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { helmChartStore, HelmChart } from '../../k8s/fluxcd/helmchart'
+import { helmChartStore, HelmChart } from '../../k8s/fluxcd/sources/helmchart'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

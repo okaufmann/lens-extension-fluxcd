@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { ociRepositoryStore, OCIRepository } from '../../k8s/fluxcd/ocirepository'
+import { ociRepositoryStore, OCIRepository } from '../../k8s/fluxcd/sources/ocirepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

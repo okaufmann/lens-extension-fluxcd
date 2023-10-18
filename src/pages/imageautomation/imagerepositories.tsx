@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { imageRepositoryStore, ImageRepository } from '../../k8s/fluxcd/imagerepository'
+import { imageRepositoryStore, ImageRepository } from '../../k8s/fluxcd/image-automation/imagerepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

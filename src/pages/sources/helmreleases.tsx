@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { helmReleaseStore, HelmRelease } from '../../k8s/fluxcd/helmrelease'
+import { helmReleaseStore, HelmRelease } from '../../k8s/fluxcd/helm/helmrelease'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

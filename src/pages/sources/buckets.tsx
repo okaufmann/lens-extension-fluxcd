@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { bucketStore, Bucket } from '../../k8s/fluxcd/bucket'
+import { bucketStore, Bucket } from '../../k8s/fluxcd/sources/bucket'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {

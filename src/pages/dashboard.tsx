@@ -15,12 +15,12 @@ class FluxEventsStore extends Renderer.K8sApi.KubeObjectStore<Renderer.K8sApi.Ku
 
 const fluxEventsStore = new FluxEventsStore();
 
-import { gitRepositoryStore, GitRepository } from '../k8s/fluxcd/gitrepository'
-import { helmChartStore, HelmChart } from '../k8s/fluxcd/helmchart'
-import { helmRepositoryStore, HelmRepository } from '../k8s/fluxcd/helmrepository'
-import { helmReleaseStore, HelmRelease } from '../k8s/fluxcd/helmrelease'
+import { gitRepositoryStore, GitRepository } from '../k8s/fluxcd/sources/gitrepository'
+import { helmChartStore, HelmChart } from '../k8s/fluxcd/sources/helmchart'
+import { helmRepositoryStore, HelmRepository } from '../k8s/fluxcd/sources/helmrepository'
+import { helmReleaseStore, HelmRelease } from '../k8s/fluxcd/helm/helmrelease'
 import { kustomizationStore, Kustomization } from '../k8s/fluxcd/kustomization'
-import { bucketStore, Bucket } from '../k8s/fluxcd/bucket'
+import { bucketStore, Bucket } from '../k8s/fluxcd/sources/bucket'
 import { crdStore } from '../k8s/core/crd'
 
 import './fluxcd-dashboard.scss'

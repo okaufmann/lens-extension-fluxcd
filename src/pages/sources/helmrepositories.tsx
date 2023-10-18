@@ -4,8 +4,8 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { helmRepositoryStore, HelmRepository } from '../k8s/fluxcd/helmrepository'
-import { getStatusClass, getStatusMessage, getStatusText } from '../utils';
+import { helmRepositoryStore, HelmRepository } from '../../k8s/fluxcd/helmrepository'
+import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {
   Component: {
@@ -42,7 +42,7 @@ export class FluxCDHelmRepositories extends React.Component<{ extension: Rendere
         searchFilters={[
           (helmRepository: HelmRepository) => helmRepository.getSearchFields()
         ]}
-        renderHeaderTitle="Git Repositories"
+        renderHeaderTitle="Helm Repositories"
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},

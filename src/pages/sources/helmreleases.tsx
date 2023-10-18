@@ -4,8 +4,8 @@ import { observer } from 'mobx-react';
 
 import React from "react";
 
-import { helmReleaseStore, HelmRelease } from '../k8s/fluxcd/helmrelease'
-import { getStatusClass, getStatusMessage, getStatusText } from '../utils';
+import { helmReleaseStore, HelmRelease } from '../../k8s/fluxcd/helmrelease'
+import { getStatusClass, getStatusMessage, getStatusText } from '../../utils';
 
 const {
   Component: {
@@ -31,6 +31,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
         tableId="helmReleasesTable"
         className="HelmReleases" store={helmReleaseStore}
         sortingCallbacks={{
+          // show revision like weave
           [sortBy.name]: (helmRelease: HelmRelease) => helmRelease.getName(),
           [sortBy.namespace]: (helmRelease: HelmRelease) => helmRelease.getNs(),
           [sortBy.ready]: (helmRelease: HelmRelease) => getStatusText(helmRelease),

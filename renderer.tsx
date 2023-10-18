@@ -4,12 +4,12 @@ import React from "react"
 import { FluxcdObjectReconcileMenuItem, FluxcdObjectReconcileMenuItemProps } from "./src/menus/fluxcd-object-reconcile-menu-item";
 import { FluxcdObjectSuspendResumeMenuItem, FluxCdObjectSuspendResumeMenuItemProps } from "./src/menus/fluxcd-object-suspend-resume-menu-item";
 import { FluxCDDashboard } from './src/pages/dashboard'
-import { FluxCDHelmReleases } from './src/pages/helmreleases'
+import { FluxCDHelmReleases } from './src/pages/sources/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
-import { FluxCDGitRepositories } from './src/pages/gitrepositories'
-import { FluxCDHelmRepositories } from './src/pages/helmrepositories'
-import { FluxCDImageRepositories } from './src/pages/imagerepositories'
-import { FluxCDBuckets } from './src/pages/buckets'
+import { FluxCDGitRepositories } from './src/pages/sources/gitrepositories'
+import { FluxCDHelmRepositories } from './src/pages/sources/helmrepositories'
+import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
+import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
 import { helmReleaseApi } from "./src/k8s/fluxcd/helmrelease";

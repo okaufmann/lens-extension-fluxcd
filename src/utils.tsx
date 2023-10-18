@@ -108,7 +108,7 @@ export function getStatusText(obj: HelmRelease): string {
   case 'ready':
     return 'Ready';
   case 'not-ready':
-    return 'Error';
+    return 'Not Ready';
   case 'suspended':
     return 'Suspended';
   case 'in-progress':

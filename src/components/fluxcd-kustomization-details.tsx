@@ -9,19 +9,40 @@ interface KustomizationDetailsState {
 
 const { Component: { DrawerItem, Badge } } = Renderer
 
+function lowerAndPluralize(str: string) {
+  const lowerStr = str.toLowerCase();
+
+  if (lowerStr.endsWith('y')) {
+    return lowerStr.replace(/y$/, 'ies');
+  } else if (lowerStr.endsWith('s') || lowerStr.endsWith('x') || lowerStr.endsWith('z') || lowerStr.endsWith('ch') || lowerStr.endsWith('sh')) {
+    return lowerStr + 'es';
+  } else {
+    return lowerStr + 's';
+  }
+}
+
 export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>, KustomizationDetailsState> {
   public readonly state: Readonly<KustomizationDetailsState> = {
     events: []
   }
 
+  sourceUrl(object: Kustomization) {
+    const name = object.spec.sourceRef.name
+    const ns = object.spec.sourceRef.namespace ?? object.metadata.namespace
+    const kind = lowerAndPluralize( object.spec.sourceRef.kind)
+
+    return `/apis/source.toolkit.fluxcd.io/v1beta1/namespaces/${ns}/${kind}/${name}`
+  }
+
   render() {
     const { object } = this.props
+
     return (
       <div>
         <DrawerItem name="Name">{object.metadata.name}</DrawerItem>
         <DrawerItem name="Namespace">{object.metadata.namespace}</DrawerItem>
         <DrawerItem name="Source">
-          <a onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(object.selfLink, true) }}>
+          <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}
           </a>
         </DrawerItem>

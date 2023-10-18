@@ -127,7 +127,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
     }
 
     return <div className="column">
-      <PieChart title={title} objects={objects} crd={this.getCrd(objects[0])} />
+      <PieChart title={title} objects={objects} crd={crd} />
     </div>
   }
 

@@ -164,15 +164,6 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
-      id: "imagerepositories",
-      parentId: "sources",
-      target: { pageId: "imagerepositories" },
-      title: "Image Repositories",
-      components: {
-        Icon: null as any,
-      }
-    },
-    {
       id: "buckets",
       parentId: "sources",
       target: { pageId: "buckets" },
@@ -180,7 +171,25 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       components: {
         Icon: null as any,
       }
-    }
+    },
+    {
+      id: "imageautomation",
+      parentId: "fluxcd",
+      title: "Image Automation",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "imagerepositories",
+      parentId: "imageautomation",
+      target: { pageId: "imagerepositories" },
+      title: "Image Repositories",
+      components: {
+        Icon: null as any,
+      }
+    },
+
   ]
 
   kubeObjectMenuItems =

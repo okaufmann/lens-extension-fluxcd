@@ -11,6 +11,10 @@ const getStats = (objects: Renderer.K8sApi.KubeObject[]) => {
   return [ready, notReady, inProgress, suspended];
 }
 
+const getPath = (crd: Renderer.K8sApi.CustomResourceDefinition) => {
+  return crd.spec.names.plural
+}
+
 export interface PieChartProps<A extends Renderer.K8sApi.KubeObject> {
   objects: A[];
   title: string;
@@ -22,9 +26,8 @@ export function PieChart(props: PieChartProps<Renderer.K8sApi.KubeObject>): Reac
   const [ready, notReady, inProgress, suspended] = getStats(objects);
 
   return <>
-    <a className="center" onClick={(e) => { e.preventDefault(); Renderer.Navigation.navigate({ pathname: `/crd/${crd.spec.group}/${crd.spec.names.plural}` }) }}>{title}: {objects.length}</a>
+    <a className="center" onClick={(e) => { e.preventDefault(); Renderer.Navigation.navigate({ pathname: getPath(crd) }) }}>{title}: {objects.length}</a>
     <Renderer.Component.PieChart
-      // title={`${title}: ${objects.length}`}
       options={{
         tooltips: {
           callbacks: {

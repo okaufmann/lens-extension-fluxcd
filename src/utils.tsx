@@ -86,6 +86,18 @@ function getMeaningfulValues(values: number[], suffixes: string[], separator = "
     .join(separator);
 }
 
+export function lowerAndPluralize(str: string) {
+  const lowerStr = str.toLowerCase();
+
+  if (lowerStr.endsWith('y')) {
+    return lowerStr.replace(/y$/, 'ies');
+  } else if (lowerStr.endsWith('s') || lowerStr.endsWith('x') || lowerStr.endsWith('z') || lowerStr.endsWith('ch') || lowerStr.endsWith('sh')) {
+    return lowerStr + 'es';
+  } else {
+    return lowerStr + 's';
+  }
+}
+
 export  function getStatusClass(obj: HelmRelease) {
   const status = getStatus(obj)
   switch (status) {
@@ -129,3 +141,4 @@ function getStatus(obj: HelmRelease) {
   if (obj.status?.conditions.find((c: any) => c.type === "Ready").status === "False") return 'not-ready';
   return 'in-progress';
 }
+

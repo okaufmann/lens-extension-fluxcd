@@ -1,25 +1,13 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { Kustomization } from "../k8s/fluxcd/kustomization";
-import { getStatusClass, getStatusText } from "../utils";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
 
 interface KustomizationDetailsState {
   events: Renderer.K8sApi.KubeEvent[]
 }
 
 const { Component: { DrawerItem, Badge } } = Renderer
-
-function lowerAndPluralize(str: string) {
-  const lowerStr = str.toLowerCase();
-
-  if (lowerStr.endsWith('y')) {
-    return lowerStr.replace(/y$/, 'ies');
-  } else if (lowerStr.endsWith('s') || lowerStr.endsWith('x') || lowerStr.endsWith('z') || lowerStr.endsWith('ch') || lowerStr.endsWith('sh')) {
-    return lowerStr + 'es';
-  } else {
-    return lowerStr + 's';
-  }
-}
 
 export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>, KustomizationDetailsState> {
   public readonly state: Readonly<KustomizationDetailsState> = {

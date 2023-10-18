@@ -12,6 +12,7 @@ import { FluxCDHelmCharts } from './src/pages/sources/helmcharts'
 import { FluxCDOCIRepositories } from './src/pages/sources/ocirepositories'
 import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
 import { FluxCDImagePolicies } from './src/pages/imageautomation/imagepolicies'
+import { FluxCDImageUpdateAutomations } from './src/pages/imageautomation/imageupdateautomations'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
@@ -98,6 +99,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
+      id: "buckets",
+      components: {
+        Page: () => <FluxCDBuckets extension={this} />,
+      }
+    },
+    {
       id: "imagerepositories",
       components: {
         Page: () => <FluxCDHelmRepositories extension={this} />,
@@ -110,9 +117,9 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
-      id: "buckets",
+      id: "imageupdateautomations",
       components: {
-        Page: () => <FluxCDBuckets extension={this} />,
+        Page: () => <FluxCDImageUpdateAutomations extension={this} />,
       }
     },
     {
@@ -241,6 +248,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "imageautomation",
       target: { pageId: "imagepolicies" },
       title: "Image Policies",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "imageupdateautomations",
+      parentId: "imageautomation",
+      target: { pageId: "imageupdateautomations" },
+      title: "Image Update Automations",
       components: {
         Icon: null as any,
       }

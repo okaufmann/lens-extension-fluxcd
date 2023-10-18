@@ -84,6 +84,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       }
     },
     {
+      id: "helmcharts",
+      components: {
+        Page: () => <FluxCDHelmCharts extension={this} />,
+      }
+    },
+    {
       id: "ocirepositories",
       components: {
         Page: () => <FluxCDOCIRepositories extension={this} />,
@@ -166,6 +172,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       parentId: "sources",
       target: { pageId: "helmrepositories" },
       title: "Helm Repositories",
+      components: {
+        Icon: null as any,
+      }
+    },
+    {
+      id: "helmcharts",
+      parentId: "sources",
+      target: { pageId: "helmcharts" },
+      title: "Helm Charts",
       components: {
         Icon: null as any,
       }

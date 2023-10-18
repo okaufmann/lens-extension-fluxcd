@@ -28,6 +28,13 @@ import './fluxcd-dashboard.scss'
 import { formatDuration } from '../utils';
 import { makeObservable } from 'mobx';
 import { observer } from 'mobx-react';
+import { OCIRepository, ociRepositoryStore } from '../k8s/fluxcd/sources/ocirepository';
+import { ImageRepository, imageRepositoryStore } from '../k8s/fluxcd/image-automation/imagerepository';
+import { ImagePolicy, imagePolicyStore } from '../k8s/fluxcd/image-automation/imagepolicy';
+import { ImageUpdateAutomation, imageUpdateAutomationStore } from '../k8s/fluxcd/image-automation/imageupdateautomation';
+import { Alert, alertStore } from '../k8s/fluxcd/notifications/alert';
+import { Provider, providerStore } from '../k8s/fluxcd/notifications/provider';
+import { Receiver, receiverStore } from '../k8s/fluxcd/notifications/receiver';
 
 enum columnId {
   message = "message",
@@ -47,6 +54,13 @@ interface FluxCDDashboardState {
   helmCharts: HelmChart[]
   helmRepositories: HelmRepository[]
   buckets: Bucket[]
+  ociRepositories: OCIRepository[],
+  imageRepositories: ImageRepository[],
+  imagePolicies: ImagePolicy[],
+  imageUpdateAutomations: ImageUpdateAutomation[],
+  alerts: Alert[],
+  providers: Provider[],
+  receivers: Receiver[],
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 
   selectedTableRowId: string
@@ -61,6 +75,13 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
     helmCharts: [],
     helmRepositories: [],
     buckets: [],
+    ociRepositories: [],
+    imageRepositories: [],
+    imagePolicies: [],
+    imageUpdateAutomations: [],
+    alerts: [],
+    providers: [],
+    receivers: [],
     crds: [],
     selectedTableRowId: ""
   }
@@ -120,19 +141,19 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
       helmChartStore,
       helmRepositoryStore,
       bucketStore,
+      ociRepositoryStore,
+      imageUpdateAutomationStore,
+      imageRepositoryStore,
+      imagePolicyStore,
+      alertStore,
+      providerStore,
+      receiverStore,
     ].forEach(store => {
       store.loadAll().then(() => this.watches.push(store.subscribe()))
     })
   }
 
   render() {
-    const getStatusClassName = (obj: any) => {
-      if (obj.spec.suspend) return 'statusSuspended';
-      if (obj.status?.conditions.find((c: any) => c.type === "Ready").status === "True") return 'statusReady';
-      if (obj.status?.conditions.find((c: any) => c.type === "Ready").status === "False") return 'statusNotReady';
-      return 'statusInProgress';
-    }
-
     if (this.state.crds.length === 0) {
       return <div>No Flux components found in the cluster</div>
     }
@@ -143,6 +164,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
           <h1>FluxCD Dashboard</h1>
         </header>
 
+        {/* add all crd from flux here as chart  */}
         <div className="grid flex FluxWorkloads pb-3">
           {this.getChart('Kustomizations', kustomizationStore.items)}
           {this.getChart('Helm releases', helmReleaseStore.items)}
@@ -151,6 +173,13 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
           {this.getChart('Helm Repositories', helmRepositoryStore.items)}
           {this.getChart('Helm Charts', helmChartStore.items)}
           {this.getChart('Buckets', bucketStore.items)}
+          {this.getChart('OCI Repositories', ociRepositoryStore.items)}
+          {this.getChart('Image Repositories', imageRepositoryStore.items)}
+          {this.getChart('Image Policies',imagePolicyStore.items)}
+          {this.getChart('Image Update Automations', imageUpdateAutomationStore.items)}
+          {this.getChart('Alerts', alertStore.items)}
+          {this.getChart('Providers', providerStore.items)}
+          {this.getChart('Receivers', receiverStore.items)}
         </div>
 
         <KubeObjectListLayout
@@ -256,6 +285,13 @@ const FluxTypes = [
   { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
   { kind: "HelmRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
   { kind: "Bucket", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "OciRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "ImagePolicy", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "ImageRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "ImageUpdateAutomation", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "Alert", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "Provider", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
+  { kind: "Receiver", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"] },
 ]
 
 function onlyFluxEvents(event: KubeEvent) {

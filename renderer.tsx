@@ -11,6 +11,7 @@ import { FluxCDHelmRepositories } from './src/pages/sources/helmrepositories'
 import { FluxCDHelmCharts } from './src/pages/sources/helmcharts'
 import { FluxCDOCIRepositories } from './src/pages/sources/ocirepositories'
 import { FluxCDImageRepositories } from './src/pages/imageautomation/imagerepositories'
+import { FluxCDImagePolicies } from './src/pages/imageautomation/imagepolicies'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
 import { FluxCDKustomizationDetails } from './src/components/fluxcd-kustomization-details'
 import { Kustomization, kustomizationApi } from './src/k8s/fluxcd/kustomization'
@@ -100,6 +101,12 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       id: "imagerepositories",
       components: {
         Page: () => <FluxCDHelmRepositories extension={this} />,
+      }
+    },
+    {
+      id: "imagepolicies",
+      components: {
+        Page: () => <FluxCDImagePolicies extension={this} />,
       }
     },
     {
@@ -229,8 +236,15 @@ export default class FluxCDExtension extends Renderer.LensExtension {
         Icon: null as any,
       }
     },
-
-    // add every crd from notifications (alerts, receiver and providers)
+    {
+      id: "imagepolicies",
+      parentId: "imageautomation",
+      target: { pageId: "imagepolicies" },
+      title: "Image Policies",
+      components: {
+        Icon: null as any,
+      }
+    },
   ]
 
   kubeObjectMenuItems =

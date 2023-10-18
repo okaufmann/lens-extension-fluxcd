@@ -97,7 +97,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
 
   componentWillUnmount(): void {
     this.abortController.abort();
-    this.watches.forEach(w => { console.log('Unregistering watch'); w() });
+    this.watches.forEach(w => { w() });
     this.watches.splice(0, this.watches.length);
     this.watches.length = 0;
   }

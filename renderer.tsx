@@ -25,6 +25,12 @@ import { helmRepositoryApi } from "./src/k8s/fluxcd/sources/helmrepository";
 import { imageRepositoryApi } from "./src/k8s/fluxcd/image-automation/imagerepository";
 import { helmChartApi } from "./src/k8s/fluxcd/sources/helmchart";
 import { bucketApi } from "./src/k8s/fluxcd/sources/bucket";
+import { ociRepositoryApi } from "./src/k8s/fluxcd/sources/ocirepository";
+import { imagePolicyApi } from "./src/k8s/fluxcd/image-automation/imagepolicy";
+import { imageUpdateAutomationApi } from "./src/k8s/fluxcd/image-automation/imageupdateautomation";
+import { alertApi } from "./src/k8s/fluxcd/notifications/alert";
+import { receiverApi } from "./src/k8s/fluxcd/notifications/receiver";
+import { providerApi } from "./src/k8s/fluxcd/notifications/provider";
 
 const {
   Component: {
@@ -42,10 +48,16 @@ const fluxcdObjects = [
   { kind: "Kustomization", apiVersions: ["kustomize.toolkit.fluxcd.io/v1beta1", "kustomize.toolkit.fluxcd.io/v1beta2", "kustomize.toolkit.fluxcd.io/v1"], api: kustomizationApi },
   { kind: "HelmRelease", apiVersions: ["helm.toolkit.fluxcd.io/v2beta1"], api: helmReleaseApi },
   { kind: "GitRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: gitRepositoryApi },
-  { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: helmChartApi },
-  { kind: "HelmRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: helmRepositoryApi },
-  { kind: "Bucket", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2"], api: bucketApi },
-  { kind: "ImageRepository", apiVersions: ["image.toolkit.fluxcd.io/v1beta2"], api: imageRepositoryApi },
+  { kind: "HelmChart", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: helmChartApi },
+  { kind: "HelmRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: helmRepositoryApi },
+  { kind: "Bucket", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: bucketApi },
+  { kind: "OCIRepository", apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"], api: ociRepositoryApi },
+  { kind: "ImageRepository", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imageRepositoryApi },
+  { kind: "ImagePolicy", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imagePolicyApi, suspend: false },
+  { kind: "ImageUpdateAutomation", apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"], api: imageUpdateAutomationApi },
+  { kind: "Alert", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: alertApi },
+  { kind: "Provider", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: providerApi, suspend: false },
+  { kind: "Receiver", apiVersions: ["notification.toolkit.fluxcd.io/v1beta1", "notification.toolkit.fluxcd.io/v1beta2"], api: receiverApi },
 ]
 
 export default class FluxCDExtension extends Renderer.LensExtension {
@@ -331,6 +343,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
     })
       .concat(
         fluxcdObjects
+          .filter(el => el.suspend !== false)
           .map(el => {
             return {
               kind: el.kind,

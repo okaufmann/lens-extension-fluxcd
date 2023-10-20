@@ -9,6 +9,7 @@ import {
   ImageUpdateAutomation,
 } from '../../k8s/fluxcd/image-automation/imageupdateautomation'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -35,8 +36,7 @@ export class FluxCDImageUpdateAutomations extends React.Component<{ extension: R
           [sortBy.namespace]: (imageUpdateAutomation: ImageUpdateAutomation) => imageUpdateAutomation.getNs(),
           [sortBy.ready]: (imageUpdateAutomation: ImageUpdateAutomation) => getStatusText(imageUpdateAutomation),
           [sortBy.status]: (imageUpdateAutomation: ImageUpdateAutomation) => getStatusMessage(imageUpdateAutomation),
-          [sortBy.age]: (imageUpdateAutomation: ImageUpdateAutomation) =>
-            imageUpdateAutomation.getAge(true, true, true),
+          [sortBy.age]: (imageUpdateAutomation: ImageUpdateAutomation) => imageUpdateAutomation.getCreationTimestamp(),
         }}
         searchFilters={[(imageUpdateAutomation: ImageUpdateAutomation) => imageUpdateAutomation.getSearchFields()]}
         renderHeaderTitle="Image Update Automations"
@@ -52,7 +52,7 @@ export class FluxCDImageUpdateAutomations extends React.Component<{ extension: R
           imageUpdateAutomation.getNs(),
           this.renderStatus(imageUpdateAutomation),
           getStatusMessage(imageUpdateAutomation),
-          imageUpdateAutomation.getAge(),
+          <KubeAge timestamp={imageUpdateAutomation.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

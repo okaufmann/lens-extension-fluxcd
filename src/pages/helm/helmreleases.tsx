@@ -6,6 +6,7 @@ import React from 'react'
 
 import { helmReleaseStore, HelmRelease } from '../../k8s/fluxcd/helm/helmrelease'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -35,7 +36,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           [sortBy.ready]: (helmRelease: HelmRelease) => getStatusText(helmRelease),
           [sortBy.chartVersion]: (helmRelease: HelmRelease) => helmRelease.spec.chart.spec.version,
           [sortBy.status]: (helmRelease: HelmRelease) => getStatusMessage(helmRelease),
-          [sortBy.age]: (helmRelease: HelmRelease) => helmRelease.getAge(),
+          [sortBy.age]: (helmRelease: HelmRelease) => helmRelease.getCreationTimestamp(),
         }}
         searchFilters={[(helmRelease: HelmRelease) => helmRelease.getSearchFields()]}
         renderHeaderTitle="Helm Releases"
@@ -53,7 +54,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           this.renderStatus(helmRelease),
           helmRelease.spec.chart.spec.version,
           getStatusMessage(helmRelease),
-          helmRelease.getAge(),
+          <KubeAge timestamp={helmRelease.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

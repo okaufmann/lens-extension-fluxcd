@@ -6,6 +6,7 @@ import React from 'react'
 
 import { receiverStore, Receiver } from '../../k8s/fluxcd/notifications/receiver'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
           [sortBy.type]: (receiver: Receiver) => receiver.spec.type,
           [sortBy.ready]: (receiver: Receiver) => getStatusText(receiver),
           [sortBy.status]: (receiver: Receiver) => getStatusMessage(receiver),
-          [sortBy.age]: (receiver: Receiver) => receiver.getAge(true, true, true),
+          [sortBy.age]: (receiver: Receiver) => receiver.getCreationTimestamp(),
         }}
         searchFilters={[(receiver: Receiver) => receiver.getSearchFields()]}
         renderHeaderTitle="Receiver"
@@ -52,7 +53,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
           receiver.spec.type,
           this.renderStatus(receiver),
           getStatusMessage(receiver),
-          receiver.getAge(),
+          <KubeAge timestamp={receiver.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

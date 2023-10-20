@@ -6,6 +6,7 @@ import React from 'react'
 
 import { bucketStore, Bucket } from '../../k8s/fluxcd/sources/bucket'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDBuckets extends React.Component<{ extension: Renderer.LensExt
           [sortBy.url]: (bucket: Bucket) => bucket.spec.url,
           [sortBy.ready]: (bucket: Bucket) => getStatusText(bucket),
           [sortBy.status]: (bucket: Bucket) => getStatusMessage(bucket),
-          [sortBy.age]: (bucket: Bucket) => bucket.getAge(true, true, true),
+          [sortBy.age]: (bucket: Bucket) => bucket.getCreationTimestamp(),
         }}
         searchFilters={[(bucket: Bucket) => bucket.getSearchFields()]}
         renderHeaderTitle="Buckets"
@@ -52,7 +53,7 @@ export class FluxCDBuckets extends React.Component<{ extension: Renderer.LensExt
           bucket.spec.url,
           this.renderStatus(bucket),
           getStatusMessage(bucket),
-          bucket.getAge(),
+          <KubeAge timestamp={bucket.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

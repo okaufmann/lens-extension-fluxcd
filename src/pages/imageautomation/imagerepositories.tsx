@@ -6,6 +6,7 @@ import React from 'react'
 
 import { imageRepositoryStore, ImageRepository } from '../../k8s/fluxcd/image-automation/imagerepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDImageRepositories extends React.Component<{ extension: Render
           [sortBy.image]: (imageRepository: ImageRepository) => imageRepository.spec.image,
           [sortBy.ready]: (imageRepository: ImageRepository) => getStatusText(imageRepository),
           [sortBy.status]: (imageRepository: ImageRepository) => getStatusMessage(imageRepository),
-          [sortBy.age]: (imageRepository: ImageRepository) => imageRepository.getAge(true, true, true),
+          [sortBy.age]: (imageRepository: ImageRepository) => imageRepository.getCreationTimestamp(),
         }}
         searchFilters={[(imageRepository: ImageRepository) => imageRepository.getSearchFields()]}
         renderHeaderTitle="Image Repositories"
@@ -52,7 +53,7 @@ export class FluxCDImageRepositories extends React.Component<{ extension: Render
           imageRepository.spec.image,
           this.renderStatus(imageRepository),
           getStatusMessage(imageRepository),
-          imageRepository.getAge(),
+          <KubeAge timestamp={imageRepository.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

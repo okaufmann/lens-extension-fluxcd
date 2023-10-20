@@ -6,6 +6,7 @@ import React from 'react'
 
 import { imagePolicyStore, ImagePolicy } from '../../k8s/fluxcd/image-automation/imagepolicy'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDImagePolicies extends React.Component<{ extension: Renderer.L
           [sortBy.repo]: (imagePolicy: ImagePolicy) => imagePolicy.spec.imageRepositoryRef.name,
           [sortBy.ready]: (imagePolicy: ImagePolicy) => getStatusText(imagePolicy),
           [sortBy.status]: (imagePolicy: ImagePolicy) => getStatusMessage(imagePolicy),
-          [sortBy.age]: (imagePolicy: ImagePolicy) => imagePolicy.getAge(true, true, true),
+          [sortBy.age]: (imagePolicy: ImagePolicy) => imagePolicy.getCreationTimestamp(),
         }}
         searchFilters={[(imagePolicy: ImagePolicy) => imagePolicy.getSearchFields()]}
         renderHeaderTitle="Image Policies"
@@ -52,7 +53,7 @@ export class FluxCDImagePolicies extends React.Component<{ extension: Renderer.L
           imagePolicy.spec.imageRepositoryRef.name,
           this.renderStatus(imagePolicy),
           getStatusMessage(imagePolicy),
-          imagePolicy.getAge(),
+          <KubeAge timestamp={imagePolicy.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

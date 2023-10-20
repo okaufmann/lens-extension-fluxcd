@@ -2,7 +2,7 @@ import { Renderer } from '@k8slens/extensions'
 import { KubeEvent } from '@k8slens/extensions/dist/src/common/k8s-api/endpoints'
 import { PieChart } from '../components/pie-chart'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 const {
   Component: { Tooltip, KubeObjectListLayout },
 } = Renderer
@@ -27,7 +27,6 @@ import { crdStore } from '../k8s/core/crd'
 
 import './fluxcd-dashboard.scss'
 
-import { formatDuration } from '../utils'
 import { makeObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { OCIRepository, ociRepositoryStore } from '../k8s/fluxcd/sources/ocirepository'
@@ -37,6 +36,7 @@ import { ImageUpdateAutomation, imageUpdateAutomationStore } from '../k8s/fluxcd
 import { Alert, alertStore } from '../k8s/fluxcd/notifications/alert'
 import { Provider, providerStore } from '../k8s/fluxcd/notifications/provider'
 import { Receiver, receiverStore } from '../k8s/fluxcd/notifications/receiver'
+import { KubeAge } from '../components/ui/kube-age'
 
 enum columnId {
   message = 'message',
@@ -254,8 +254,8 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
                 // </Link>,
                 event.getSource(),
                 event.count,
-                <KubeEventAge timestamp={event.getCreationTimestamp()} key={`date`} />,
-                <KubeEventAge timestamp={new Date(event.lastTimestamp).getTime()} key={`time`} />,
+                <KubeAge timestamp={event.getCreationTimestamp()} key={`date`} />,
+                <KubeAge timestamp={new Date(event.lastTimestamp).getTime()} key={`time`} />,
               ]
             }}
           />
@@ -263,27 +263,6 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
       </Renderer.Component.TabLayout>
     )
   }
-}
-
-export function KubeEventAge(props: { timestamp: number }): React.ReactElement {
-  const getAge = (ts: number): string => {
-    const diff = Date.now() - new Date(ts).getTime()
-    return formatDuration(diff, true)
-  }
-
-  const [age, setAge] = useState(getAge(props.timestamp))
-
-  useEffect(() => {
-    const timeout = setInterval(() => {
-      setAge(getAge(props.timestamp))
-    }, 1000)
-
-    return () => {
-      clearInterval(timeout)
-    }
-  }, [])
-
-  return <>{age}</>
 }
 
 const FluxTypes = [

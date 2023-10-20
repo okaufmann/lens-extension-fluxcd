@@ -6,6 +6,7 @@ import React from 'react'
 
 import { providerStore, Provider } from '../../k8s/fluxcd/notifications/provider'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDProviders extends React.Component<{ extension: Renderer.LensE
           [sortBy.type]: (provider: Provider) => provider.spec.type,
           [sortBy.ready]: (provider: Provider) => getStatusText(provider),
           [sortBy.status]: (provider: Provider) => getStatusMessage(provider),
-          [sortBy.age]: (provider: Provider) => provider.getAge(true, true, true),
+          [sortBy.age]: (provider: Provider) => provider.getCreationTimestamp(),
         }}
         searchFilters={[(provider: Provider) => provider.getSearchFields()]}
         renderHeaderTitle="Providers"
@@ -52,7 +53,7 @@ export class FluxCDProviders extends React.Component<{ extension: Renderer.LensE
           provider.spec.type,
           this.renderStatus(provider),
           getStatusMessage(provider),
-          provider.getAge(),
+          <KubeAge timestamp={provider.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

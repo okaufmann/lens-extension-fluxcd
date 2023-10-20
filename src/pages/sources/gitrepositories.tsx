@@ -6,6 +6,7 @@ import React from 'react'
 
 import { gitRepositoryStore, GitRepository } from '../../k8s/fluxcd/sources/gitrepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
           [sortBy.ready]: (gitRepository: GitRepository) => getStatusText(gitRepository),
           [sortBy.url]: (gitRepository: GitRepository) => gitRepository.spec.url,
           [sortBy.status]: (gitRepository: GitRepository) => getStatusMessage(gitRepository),
-          [sortBy.age]: (gitRepository: GitRepository) => gitRepository.getAge(),
+          [sortBy.age]: (gitRepository: GitRepository) => gitRepository.getCreationTimestamp(),
         }}
         searchFilters={[(gitRepository: GitRepository) => gitRepository.getSearchFields()]}
         renderHeaderTitle="Git Repositories"
@@ -52,7 +53,7 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
           this.renderStatus(gitRepository),
           gitRepository.spec.url,
           getStatusMessage(gitRepository),
-          gitRepository.getAge(),
+          <KubeAge timestamp={gitRepository.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

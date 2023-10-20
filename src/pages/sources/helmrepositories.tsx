@@ -6,6 +6,7 @@ import React from 'react'
 
 import { helmRepositoryStore, HelmRepository } from '../../k8s/fluxcd/sources/helmrepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDHelmRepositories extends React.Component<{ extension: Rendere
           [sortBy.url]: (helmRepository: HelmRepository) => helmRepository.spec.url,
           [sortBy.ready]: (helmRepository: HelmRepository) => getStatusText(helmRepository),
           [sortBy.status]: (helmRepository: HelmRepository) => getStatusMessage(helmRepository),
-          [sortBy.age]: (helmRepository: HelmRepository) => helmRepository.getAge(true, true, true),
+          [sortBy.age]: (helmRepository: HelmRepository) => helmRepository.getCreationTimestamp(),
         }}
         searchFilters={[(helmRepository: HelmRepository) => helmRepository.getSearchFields()]}
         renderHeaderTitle="Helm Repositories"
@@ -52,7 +53,7 @@ export class FluxCDHelmRepositories extends React.Component<{ extension: Rendere
           helmRepository.spec.url,
           this.renderStatus(helmRepository),
           getStatusMessage(helmRepository),
-          helmRepository.getAge(),
+          <KubeAge timestamp={helmRepository.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

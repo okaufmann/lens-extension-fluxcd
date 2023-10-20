@@ -6,6 +6,7 @@ import React from 'react'
 
 import { alertStore, Alert } from '../../k8s/fluxcd/notifications/alert'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -32,7 +33,7 @@ export class FluxCDAlerts extends React.Component<{ extension: Renderer.LensExte
           [sortBy.namespace]: (alert: Alert) => alert.getNs(),
           [sortBy.ready]: (alert: Alert) => getStatusText(alert),
           [sortBy.status]: (alert: Alert) => getStatusMessage(alert),
-          [sortBy.age]: (alert: Alert) => alert.getAge(true, true, true),
+          [sortBy.age]: (alert: Alert) => alert.getCreationTimestamp(),
         }}
         searchFilters={[(alert: Alert) => alert.getSearchFields()]}
         renderHeaderTitle="Alerts"
@@ -48,7 +49,7 @@ export class FluxCDAlerts extends React.Component<{ extension: Renderer.LensExte
           alert.getNs(),
           this.renderStatus(alert),
           getStatusMessage(alert),
-          alert.getAge(),
+          <KubeAge timestamp={alert.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

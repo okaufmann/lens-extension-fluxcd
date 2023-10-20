@@ -6,6 +6,7 @@ import React from 'react'
 
 import { helmChartStore, HelmChart } from '../../k8s/fluxcd/sources/helmchart'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDHelmCharts extends React.Component<{ extension: Renderer.Lens
           [sortBy.ready]: (helmChart: HelmChart) => getStatusText(helmChart),
           [sortBy.chart]: (helmChart: HelmChart) => helmChart.spec.chart,
           [sortBy.status]: (helmChart: HelmChart) => getStatusMessage(helmChart),
-          [sortBy.age]: (helmChart: HelmChart) => helmChart.getAge(true, true, true),
+          [sortBy.age]: (helmChart: HelmChart) => helmChart.getCreationTimestamp(),
         }}
         searchFilters={[(helmChart: HelmChart) => helmChart.getSearchFields()]}
         renderHeaderTitle="Helm Charts"
@@ -52,7 +53,7 @@ export class FluxCDHelmCharts extends React.Component<{ extension: Renderer.Lens
           this.renderStatus(helmChart),
           helmChart.spec.chart,
           getStatusMessage(helmChart),
-          helmChart.getAge(),
+          <KubeAge timestamp={helmChart.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

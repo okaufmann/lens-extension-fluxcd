@@ -6,6 +6,7 @@ import React from 'react'
 
 import { kustomizationStore, Kustomization } from '../k8s/fluxcd/kustomization'
 import { getStatusClass, getStatusMessage, getStatusText } from '../utils'
+import { KubeAge } from '../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -32,7 +33,7 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           [sortBy.namespace]: (kustomization: Kustomization) => kustomization.getNs(),
           [sortBy.ready]: (kustomization: Kustomization) => getStatusText(kustomization),
           [sortBy.status]: (kustomization: Kustomization) => getStatusMessage(kustomization),
-          [sortBy.age]: (kustomization: Kustomization) => kustomization.getAge(),
+          [sortBy.age]: (kustomization: Kustomization) => kustomization.getCreationTimestamp(),
         }}
         searchFilters={[(kustomization: Kustomization) => kustomization.getSearchFields()]}
         renderHeaderTitle="Kustomizations"
@@ -48,7 +49,7 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           kustomization.getNs(),
           this.renderStatus(kustomization),
           getStatusMessage(kustomization),
-          kustomization.getAge(),
+          <KubeAge timestamp={kustomization.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

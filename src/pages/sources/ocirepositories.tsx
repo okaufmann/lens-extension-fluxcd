@@ -6,6 +6,7 @@ import React from 'react'
 
 import { ociRepositoryStore, OCIRepository } from '../../k8s/fluxcd/sources/ocirepository'
 import { getStatusClass, getStatusMessage, getStatusText } from '../../utils'
+import { KubeAge } from '../../components/ui/kube-age'
 
 const {
   Component: { KubeObjectListLayout, Badge },
@@ -34,7 +35,7 @@ export class FluxCDOCIRepositories extends React.Component<{ extension: Renderer
           [sortBy.url]: (ociRepository: OCIRepository) => ociRepository.spec.url,
           [sortBy.ready]: (ociRepository: OCIRepository) => getStatusText(ociRepository),
           [sortBy.status]: (ociRepository: OCIRepository) => getStatusMessage(ociRepository),
-          [sortBy.age]: (ociRepository: OCIRepository) => ociRepository.getAge(true, true, true),
+          [sortBy.age]: (ociRepository: OCIRepository) => ociRepository.getCreationTimestamp(),
         }}
         searchFilters={[(ociRepository: OCIRepository) => ociRepository.getSearchFields()]}
         renderHeaderTitle="OCI Repositories"
@@ -52,7 +53,7 @@ export class FluxCDOCIRepositories extends React.Component<{ extension: Renderer
           ociRepository.spec.url,
           this.renderStatus(ociRepository),
           getStatusMessage(ociRepository),
-          ociRepository.getAge(),
+          <KubeAge timestamp={ociRepository.getCreationTimestamp()} key="age" />,
         ]}
       />
     )

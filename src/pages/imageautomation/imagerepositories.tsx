@@ -42,7 +42,7 @@ export class FluxCDImageRepositories extends React.Component<{ extension: Render
         searchFilters={[
           (imageRepository: ImageRepository) => imageRepository.getSearchFields()
         ]}
-        renderHeaderTitle="Git Repositories"
+        renderHeaderTitle="Image Repositories"
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},

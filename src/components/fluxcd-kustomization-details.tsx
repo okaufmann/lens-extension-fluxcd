@@ -21,22 +21,25 @@ export class FluxCDKustomizationDetails extends React.Component<Renderer.Compone
 
     return (
       <div>
+        <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
+        <DrawerItem name="Ready">
+          <Badge className={getStatusClass(object)} label={getStatusText(object)} />
+        </DrawerItem>
+        <DrawerItem name="UID">{object.metadata.uid}</DrawerItem>
+        <DrawerItem name="Version">{object.metadata.resourceVersion}</DrawerItem>
+        <DrawerItem name="Path">{object.spec.path}</DrawerItem>
+        <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
+        <DrawerItem name="Timeout">{object.spec.timeout}</DrawerItem>
+        <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
+        <DrawerItem name="Prune">{object.spec.prune === true ? 'Yes' : 'No'}</DrawerItem>
+        <DrawerItem name="Force">{object.spec.force === true ? 'Yes' : 'No'}</DrawerItem>
+        <DrawerItem name="Last Applied Revision">{object.status.lastAppliedRevision}</DrawerItem>
+
         <DrawerItem name="Source">
           <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}
           </a>
         </DrawerItem>
-        <DrawerItem name="Path">{object.spec.path}</DrawerItem>
-        <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
-        <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
-        <DrawerItem name="Prune">{object.spec.prune === true ? 'Yes' : 'No'}</DrawerItem>
-        <DrawerItem name="Last Applied Revision">{object.status.lastAppliedRevision}</DrawerItem>
-        <DrawerItem name="Ready">
-          <Badge className={getStatusClass(object)} label={getStatusText(object)} />
-        </DrawerItem>
-        <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
-        <DrawerItem name="Version">{object.metadata.resourceVersion}</DrawerItem>
-        <DrawerItem name="UID">{object.metadata.uid}</DrawerItem>
       </div>
     )
   }

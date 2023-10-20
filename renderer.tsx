@@ -17,12 +17,13 @@ import { FluxCDAlerts } from './src/pages/notifications/alerts'
 import { FluxCDProviders } from './src/pages/notifications/providers'
 import { FluxCDReceivers } from './src/pages/notifications/receivers'
 import { FluxCDBuckets } from './src/pages/sources/buckets'
+
 import { FluxCDKustomizationDetails } from './src/components/details/kustomization-details'
-import { FluxCDReceiverDetails } from './src/components/details/imageautomation/receiver-details'
 import { FluxCDHelmChartDetails } from './src/components/details/sources/helm-chart-details'
 import { FluxCDHelmRepositoryDetails } from './src/components/details/sources/helm-repository-details'
 import { FluxCDGitRepositoryDetails } from './src/components/details/sources/git-repository-details'
 import { FluxCDHelmReleaseDetails } from './src/components/details/helm/helm-release-details'
+import { FluxCDReceiverDetails } from './src/components/notification/receiver-details'
 import { Kustomization } from './src/k8s/fluxcd/kustomization'
 import { Receiver } from "./src/k8s/fluxcd/notifications/receiver";
 import { fluxcdObjects } from "./src/k8s/fluxcd/objects";

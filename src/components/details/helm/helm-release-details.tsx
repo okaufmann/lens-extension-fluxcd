@@ -1,8 +1,8 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { HelmRelease } from "../k8s/fluxcd/helm/helmrelease";
-import { lowerAndPluralize } from "../utils";
-import { crdStore } from "../k8s/core/crd";
+import { HelmRelease } from "../../../k8s/fluxcd/helm/helmrelease";
+import { lowerAndPluralize } from "../../../utils";
+import { crdStore } from "../../../k8s/core/crd";
 
 interface HelmReleaseDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]

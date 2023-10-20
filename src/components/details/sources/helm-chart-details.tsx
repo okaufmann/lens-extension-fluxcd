@@ -1,8 +1,8 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { HelmChart } from "../k8s/fluxcd/sources/helmchart";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
-import { crdStore } from "../k8s/core/crd";
+import { HelmChart } from "../../../k8s/fluxcd/sources/helmchart";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../../../utils";
+import { crdStore } from "../../../k8s/core/crd";
 
 interface HelmChartDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]

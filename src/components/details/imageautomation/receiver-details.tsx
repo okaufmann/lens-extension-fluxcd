@@ -1,8 +1,8 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { Receiver } from "../k8s/fluxcd/notifications/receiver";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
-import { crdStore } from "../k8s/core/crd";
+import { Receiver } from "../../../k8s/fluxcd/notifications/receiver";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../../../utils";
+import { crdStore } from "../../../k8s/core/crd";
 
 interface ReceiverDetailsState {
   events: Renderer.K8sApi.KubeEvent[],

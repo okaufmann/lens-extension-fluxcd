@@ -1,6 +1,6 @@
 import { Renderer, Common } from "@k8slens/extensions";
 import React from "react";
-import { HelmRepository } from "../k8s/fluxcd/sources/helmrepository";
+import { HelmRepository } from "../../../k8s/fluxcd/sources/helmrepository";
 
 const { Component: { DrawerItem } } = Renderer
 

@@ -1,7 +1,7 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { Kustomization } from "../k8s/fluxcd/kustomization";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
+import { Kustomization } from "../../k8s/fluxcd/kustomization";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../../utils";
 
 const { Component: { DrawerItem, Badge } } = Renderer
 

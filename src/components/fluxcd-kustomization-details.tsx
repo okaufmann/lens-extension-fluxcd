@@ -3,16 +3,10 @@ import React from "react";
 import { Kustomization } from "../k8s/fluxcd/kustomization";
 import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
 
-interface KustomizationDetailsState {
-  events: Renderer.K8sApi.KubeEvent[]
-}
-
 const { Component: { DrawerItem, Badge } } = Renderer
 
-export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>, KustomizationDetailsState> {
-  public readonly state: Readonly<KustomizationDetailsState> = {
-    events: []
-  }
+export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>> {
+
 
   sourceUrl(object: Kustomization) {
     const name = object.spec.sourceRef.name

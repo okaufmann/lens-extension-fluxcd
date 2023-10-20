@@ -5,7 +5,6 @@ import { lowerAndPluralize } from "../utils";
 import { crdStore } from "../k8s/core/crd";
 
 interface HelmChartDetailsState {
-  events: Renderer.K8sApi.KubeEvent[],
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
@@ -14,7 +13,6 @@ const { Component: { DrawerItem } } = Renderer
 
 export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<HelmChart>, HelmChartDetailsState> {
   public readonly state: Readonly<HelmChartDetailsState> = {
-    events: [],
     crds: [],
   }
 

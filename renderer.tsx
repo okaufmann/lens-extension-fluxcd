@@ -3,6 +3,7 @@ import React from "react"
 
 import { FluxcdObjectReconcileMenuItem, FluxcdObjectReconcileMenuItemProps } from "./src/menus/fluxcd-object-reconcile-menu-item";
 import { FluxcdObjectSuspendResumeMenuItem, FluxCdObjectSuspendResumeMenuItemProps } from "./src/menus/fluxcd-object-suspend-resume-menu-item";
+
 import { FluxCDDashboard } from './src/pages/dashboard'
 import { FluxCDHelmReleases } from './src/pages/helm/helmreleases'
 import { FluxCDKustomizations } from './src/pages/kustomizations'
@@ -24,6 +25,8 @@ import { FluxCDHelmRepositoryDetails } from './src/components/details/sources/he
 import { FluxCDGitRepositoryDetails } from './src/components/details/sources/git-repository-details'
 import { FluxCDHelmReleaseDetails } from './src/components/details/helm/helm-release-details'
 import { FluxCDReceiverDetails } from './src/components/notification/receiver-details'
+import { FluxCDImageRepositoryDetails } from './src/components/details/imageautomation/image-repository-details'
+
 import { Kustomization } from './src/k8s/fluxcd/kustomization'
 import { Receiver } from "./src/k8s/fluxcd/notifications/receiver";
 import { fluxcdObjects } from "./src/k8s/fluxcd/objects";
@@ -58,6 +61,14 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       priority: 10,
       components: {
         Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDReceiverDetails {...props} />
+      }
+    },
+    {
+      kind: "ImageRepository",
+      apiVersions: ["image.toolkit.fluxcd.io/v1beta1", "image.toolkit.fluxcd.io/v1beta2"],
+      priority: 10,
+      components: {
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDImageRepositoryDetails {...props} />
       }
     },
     {

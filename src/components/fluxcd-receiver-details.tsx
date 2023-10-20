@@ -1,7 +1,7 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { Receiver } from "../k8s/fluxcd/notifications/receiver";
-import { lowerAndPluralize } from "../utils";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
 import { crdStore } from "../k8s/core/crd";
 
 interface ReceiverDetailsState {
@@ -9,7 +9,7 @@ interface ReceiverDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
-const { Component: { DrawerItem } } = Renderer
+const { Component: { DrawerItem, Badge } } = Renderer
 
 
 export class FluxCDReceiverDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Receiver>, ReceiverDetailsState> {
@@ -55,6 +55,9 @@ export class FluxCDReceiverDetails extends React.Component<Renderer.Component.Ku
     return (
       <div>
         <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
+        <DrawerItem name="Ready">
+          <Badge className={getStatusClass(object)} label={getStatusText(object)} />
+        </DrawerItem>
         <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
         <DrawerItem name="Webhook Path"><a href="#">{object.status?.webhookPath}</a></DrawerItem>
         <DrawerItem name="Events">

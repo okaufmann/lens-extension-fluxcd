@@ -1,14 +1,14 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { HelmChart } from "../k8s/fluxcd/sources/helmchart";
-import { lowerAndPluralize } from "../utils";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../utils";
 import { crdStore } from "../k8s/core/crd";
 
 interface HelmChartDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
-const { Component: { DrawerItem } } = Renderer
+const { Component: { DrawerItem, Badge } } = Renderer
 
 
 export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<HelmChart>, HelmChartDetailsState> {
@@ -54,6 +54,9 @@ export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.K
     return (
       <div>
         <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
+        <DrawerItem name="Ready">
+          <Badge className={getStatusClass(object)} label={getStatusText(object)} />
+        </DrawerItem>
         <DrawerItem name="Chart">{object.spec.chart}</DrawerItem>
         <DrawerItem name="Version">{object.spec.version}</DrawerItem>
         <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>

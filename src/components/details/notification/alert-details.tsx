@@ -1,18 +1,22 @@
-import { Renderer } from "@k8slens/extensions";
-import React from "react";
-import { Alert } from "../../../k8s/fluxcd/notifications/alert";
-import { lowerAndPluralize } from "../../../utils";
-import { crdStore } from "../../../k8s/core/crd";
+import { Renderer } from '@k8slens/extensions'
+import React from 'react'
+import { Alert } from '../../../k8s/fluxcd/notifications/alert'
+import { lowerAndPluralize } from '../../../utils'
+import { crdStore } from '../../../k8s/core/crd'
 
 interface AlertDetailsState {
-  events: Renderer.K8sApi.KubeEvent[],
+  events: Renderer.K8sApi.KubeEvent[]
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
-const { Component: { DrawerItem } } = Renderer
+const {
+  Component: { DrawerItem },
+} = Renderer
 
-
-export class FluxCDAlertDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Alert>, AlertDetailsState> {
+export class FluxCDAlertDetails extends React.Component<
+  Renderer.Component.KubeObjectDetailsProps<Alert>,
+  AlertDetailsState
+> {
   public readonly state: Readonly<AlertDetailsState> = {
     events: [],
     crds: [],
@@ -26,28 +30,28 @@ export class FluxCDAlertDetails extends React.Component<Renderer.Component.KubeO
     }
 
     if (!crds) {
-      return null;
+      return null
     }
 
-    return crds.find(crd => crd.spec.names.kind === kind)
+    return crds.find((crd) => crd.spec.names.kind === kind)
   }
 
   sourceUrl(resource: any, overwriteKind: string = null) {
     const name = resource.name
     const ns = resource.namespace ?? this.props.object.metadata.namespace
-    const resourceKind =overwriteKind ?? resource.kind
+    const resourceKind = overwriteKind ?? resource.kind
     const kind = lowerAndPluralize(resourceKind)
     const crd = this.getCrd(resourceKind)
     const apiVersion = crd?.spec.versions?.find((v: any) => v.storage === true)?.name
     const group = crd?.spec.group
 
-    if(!apiVersion || !group) return ''
+    if (!apiVersion || !group) return ''
 
     return `/apis/${group}/${apiVersion}/namespaces/${ns}/${kind}/${name}`
   }
 
   async componentDidMount() {
-    crdStore.loadAll().then((l: any) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
+    crdStore.loadAll().then((l: any) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }))
   }
 
   render() {
@@ -58,33 +62,38 @@ export class FluxCDAlertDetails extends React.Component<Renderer.Component.KubeO
         <DrawerItem name="Event Severity">{object.spec.eventSeverity}</DrawerItem>
         <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
         <DrawerItem name="Provider">
-          <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object.spec.providerRef, 'Provider'), true) }}>
-          Provider:{object.spec.providerRef.name}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              Renderer.Navigation.showDetails(this.sourceUrl(object.spec.providerRef, 'Provider'), true)
+            }}
+          >
+            Provider:{object.spec.providerRef.name}
           </a>
         </DrawerItem>
         <DrawerItem name="Resources">
-          {object.spec.eventSources.map((eventSource: any) =>
-            <li>
-              {eventSource.name === "*" ? (
-                <span>{eventSource.kind}:{eventSource.name}</span>
+          {object.spec.eventSources.map((eventSource: any, index: number) => (
+            <li key={index}>
+              {eventSource.name === '*' ? (
+                <span>
+                  {eventSource.kind}:{eventSource.name}
+                </span>
               ) : (
                 <a
                   href="#"
-                  onClick={e => {
-                    e.preventDefault();
-                    Renderer.Navigation.showDetails(this.sourceUrl(eventSource), true);
+                  onClick={(e) => {
+                    e.preventDefault()
+                    Renderer.Navigation.showDetails(this.sourceUrl(eventSource), true)
                   }}
                 >
                   {eventSource.kind}:{eventSource.name}
                 </a>
               )}
-
             </li>
-          )}
+          ))}
         </DrawerItem>
       </div>
     )
   }
-
 }
-

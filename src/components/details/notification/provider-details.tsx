@@ -1,18 +1,21 @@
-import { Renderer } from "@k8slens/extensions";
-import React from "react";
-import { Provider } from "../../../k8s/fluxcd/notifications/provider";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../../../utils";
-import { crdStore } from "../../../k8s/core/crd";
+import { Renderer } from '@k8slens/extensions'
+import React from 'react'
+import { Provider } from '../../../k8s/fluxcd/notifications/provider'
+import { crdStore } from '../../../k8s/core/crd'
 
 interface ProviderDetailsState {
-  events: Renderer.K8sApi.KubeEvent[],
+  events: Renderer.K8sApi.KubeEvent[]
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
-const { Component: { DrawerItem, Badge } } = Renderer
+const {
+  Component: { DrawerItem },
+} = Renderer
 
-
-export class FluxCDProviderDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Provider>, ProviderDetailsState> {
+export class FluxCDProviderDetails extends React.Component<
+  Renderer.Component.KubeObjectDetailsProps<Provider>,
+  ProviderDetailsState
+> {
   public readonly state: Readonly<ProviderDetailsState> = {
     events: [],
     crds: [],
@@ -26,10 +29,10 @@ export class FluxCDProviderDetails extends React.Component<Renderer.Component.Ku
     }
 
     if (!crds) {
-      return null;
+      return null
     }
 
-    return crds.find(crd => crd.spec.names.kind === kind)
+    return crds.find((crd) => crd.spec.names.kind === kind)
   }
 
   sourceUrl(resource: Provider) {
@@ -38,13 +41,13 @@ export class FluxCDProviderDetails extends React.Component<Renderer.Component.Ku
 
     const url = `/api/v1/namespaces/${ns}/secrets/${name}`
 
-    console.log({url})
+    console.log({ url })
 
     return url
   }
 
   async componentDidMount() {
-    crdStore.loadAll().then((l: any) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
+    crdStore.loadAll().then((l: any) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }))
   }
 
   render() {
@@ -56,13 +59,17 @@ export class FluxCDProviderDetails extends React.Component<Renderer.Component.Ku
         <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
 
         <DrawerItem name="Resources">
-          <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              Renderer.Navigation.showDetails(this.sourceUrl(object), true)
+            }}
+          >
             Secret:{object.spec.secretRef.name}
           </a>
         </DrawerItem>
       </div>
     )
   }
-
 }
-

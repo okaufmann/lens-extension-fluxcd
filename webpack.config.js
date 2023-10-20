@@ -5,8 +5,8 @@ module.exports = [
   {
     entry: './main.ts',
     context: __dirname,
-    target: "electron-main",
-    mode: "production",
+    target: 'electron-main',
+    mode: 'production',
     module: {
       rules: [
         {
@@ -18,27 +18,27 @@ module.exports = [
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
-            "style-loader",
+            'style-loader',
             // Translates CSS into CommonJS
-            "css-loader",
+            'css-loader',
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader',
           ],
         },
       ],
     },
     externals: [
       {
-        "@k8slens/extensions": "var global.LensExtensions",
-        "mobx": "var global.Mobx",
-        "react": "var global.React"
-      }
+        '@k8slens/extensions': 'var global.LensExtensions',
+        mobx: 'var global.Mobx',
+        react: 'var global.React',
+      },
     ],
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-      libraryTarget: "commonjs2",
+      libraryTarget: 'commonjs2',
       filename: 'main.js',
       path: path.resolve(__dirname, 'dist'),
     },
@@ -46,8 +46,8 @@ module.exports = [
   {
     entry: './renderer.tsx',
     context: __dirname,
-    target: "electron-renderer",
-    mode: "production",
+    target: 'electron-renderer',
+    mode: 'production',
     module: {
       rules: [
         {
@@ -59,11 +59,11 @@ module.exports = [
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
-            "style-loader",
+            'style-loader',
             // Translates CSS into CommonJS
-            "css-loader",
+            'css-loader',
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader',
           ],
         },
         {
@@ -74,23 +74,23 @@ module.exports = [
     },
     externals: [
       {
-        "@k8slens/extensions": "var global.LensExtensions",
-        "react": "var global.React",
-        "mobx": "var global.Mobx"
-      }
+        '@k8slens/extensions': 'var global.LensExtensions',
+        react: 'var global.React',
+        mobx: 'var global.Mobx',
+      },
     ],
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-      libraryTarget: "commonjs2",
-      globalObject: "this",
+      libraryTarget: 'commonjs2',
+      globalObject: 'this',
       filename: 'renderer.js',
       path: path.resolve(__dirname, 'dist'),
     },
     node: {
       __dirname: false,
-      __filename: false
-    }
+      __filename: false,
+    },
   },
-];
+]

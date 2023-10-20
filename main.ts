@@ -1,5 +1,3 @@
-import { Main } from "@k8slens/extensions";
+import { Main } from '@k8slens/extensions'
 
-export default class FluxCDExtensionMain extends Main.LensExtension {
-
-}
+export default class FluxCDExtensionMain extends Main.LensExtension {}

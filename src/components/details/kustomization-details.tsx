@@ -1,17 +1,19 @@
-import { Renderer } from "@k8slens/extensions";
-import React from "react";
-import { Kustomization } from "../../k8s/fluxcd/kustomization";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../../utils";
+import { Renderer } from '@k8slens/extensions'
+import React from 'react'
+import { Kustomization } from '../../k8s/fluxcd/kustomization'
+import { getStatusClass, getStatusText, lowerAndPluralize } from '../../utils'
 
-const { Component: { DrawerItem, Badge } } = Renderer
+const {
+  Component: { DrawerItem, Badge },
+} = Renderer
 
-export class FluxCDKustomizationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<Kustomization>> {
-
-
+export class FluxCDKustomizationDetails extends React.Component<
+  Renderer.Component.KubeObjectDetailsProps<Kustomization>
+> {
   sourceUrl(object: Kustomization) {
     const name = object.spec.sourceRef.name
     const ns = object.spec.sourceRef.namespace ?? object.metadata.namespace
-    const kind = lowerAndPluralize( object.spec.sourceRef.kind)
+    const kind = lowerAndPluralize(object.spec.sourceRef.kind)
 
     return `/apis/source.toolkit.fluxcd.io/v1beta1/namespaces/${ns}/${kind}/${name}`
   }
@@ -21,7 +23,7 @@ export class FluxCDKustomizationDetails extends React.Component<Renderer.Compone
 
     return (
       <div>
-        <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === "Ready").message}</DrawerItem>
+        <DrawerItem name="Status">{object.status?.conditions.find((s: any) => s.type === 'Ready').message}</DrawerItem>
         <DrawerItem name="Ready">
           <Badge className={getStatusClass(object)} label={getStatusText(object)} />
         </DrawerItem>
@@ -36,13 +38,17 @@ export class FluxCDKustomizationDetails extends React.Component<Renderer.Compone
         <DrawerItem name="Last Applied Revision">{object.status.lastAppliedRevision}</DrawerItem>
 
         <DrawerItem name="Source">
-          <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              Renderer.Navigation.showDetails(this.sourceUrl(object), true)
+            }}
+          >
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}
           </a>
         </DrawerItem>
       </div>
     )
   }
-
 }
-

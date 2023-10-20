@@ -1,35 +1,32 @@
 import { Renderer } from '@k8slens/extensions'
 
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react'
 
-import React from "react";
+import React from 'react'
 
 import { kustomizationStore, Kustomization } from '../k8s/fluxcd/kustomization'
-import { getStatusClass, getStatusMessage, getStatusText } from '../utils';
+import { getStatusClass, getStatusMessage, getStatusText } from '../utils'
 
 const {
-  Component: {
-    KubeObjectListLayout,
-    Badge
-  }
-} = Renderer;
+  Component: { KubeObjectListLayout, Badge },
+} = Renderer
 
 enum sortBy {
-  name = "name",
-  namespace = "namespace",
-  status = "status",
-  ready = "ready",
-  age = "age",
+  name = 'name',
+  namespace = 'namespace',
+  status = 'status',
+  ready = 'ready',
+  age = 'age',
 }
 
 @observer
 export class FluxCDKustomizations extends React.Component<{ extension: Renderer.LensExtension }> {
-
   render() {
     return (
       <KubeObjectListLayout
         tableId="kustomizationsTable"
-        className="Kustomizations" store={kustomizationStore}
+        className="Kustomizations"
+        store={kustomizationStore}
         sortingCallbacks={{
           [sortBy.name]: (kustomization: Kustomization) => kustomization.getName(),
           [sortBy.namespace]: (kustomization: Kustomization) => kustomization.getNs(),
@@ -37,16 +34,14 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
           [sortBy.status]: (kustomization: Kustomization) => getStatusMessage(kustomization),
           [sortBy.age]: (kustomization: Kustomization) => kustomization.getAge(),
         }}
-        searchFilters={[
-          (kustomization: Kustomization) => kustomization.getSearchFields()
-        ]}
+        searchFilters={[(kustomization: Kustomization) => kustomization.getSearchFields()]}
         renderHeaderTitle="Kustomizations"
         renderTableHeader={[
-          {title: "Name", className: "name", sortBy: sortBy.name},
-          {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
-          {title: "Ready", className: "ready", sortBy: sortBy.ready},
-          {title: "Status", className: "status", sortBy: sortBy.status},
-          {title: "Age", className: "age", sortBy: sortBy.age},
+          { title: 'Name', className: 'name', sortBy: sortBy.name },
+          { title: 'Namespace', className: 'namespace', sortBy: sortBy.namespace },
+          { title: 'Ready', className: 'ready', sortBy: sortBy.ready },
+          { title: 'Status', className: 'status', sortBy: sortBy.status },
+          { title: 'Age', className: 'age', sortBy: sortBy.age },
         ]}
         renderTableContents={(kustomization: Kustomization) => [
           kustomization.getName(),
@@ -62,8 +57,6 @@ export class FluxCDKustomizations extends React.Component<{ extension: Renderer.
   renderStatus(kustomization: Kustomization) {
     const className = getStatusClass(kustomization)
     const text = getStatusText(kustomization)
-    return (
-      <Badge key="name" label={text} className={className}/>
-    )
+    return <Badge key="name" label={text} className={className} />
   }
 }

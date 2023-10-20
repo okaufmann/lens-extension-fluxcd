@@ -1,16 +1,21 @@
-import { Renderer } from "@k8slens/extensions";
-import React from "react";
-import { ImageUpdateAutomation } from "../../../k8s/fluxcd/image-automation/imageupdateautomation";
-import { lowerAndPluralize } from "../../../utils";
-import { crdStore } from "../../../k8s/core/crd";
+import { Renderer } from '@k8slens/extensions'
+import React from 'react'
+import { ImageUpdateAutomation } from '../../../k8s/fluxcd/image-automation/imageupdateautomation'
+import { lowerAndPluralize } from '../../../utils'
+import { crdStore } from '../../../k8s/core/crd'
 
-const { Component: { DrawerItem } } = Renderer
+const {
+  Component: { DrawerItem },
+} = Renderer
 
 interface ImageUpdateAutomationDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
 
-export class FluxCDImageUpdateAutomationDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<ImageUpdateAutomation>, ImageUpdateAutomationDetailsState> {
+export class FluxCDImageUpdateAutomationDetails extends React.Component<
+  Renderer.Component.KubeObjectDetailsProps<ImageUpdateAutomation>,
+  ImageUpdateAutomationDetailsState
+> {
   public readonly state: Readonly<ImageUpdateAutomationDetailsState> = {
     crds: [],
   }
@@ -23,27 +28,27 @@ export class FluxCDImageUpdateAutomationDetails extends React.Component<Renderer
     }
 
     if (!crds) {
-      return null;
+      return null
     }
 
-    return crds.find(crd => crd.spec.names.kind === kind) ?? null
+    return crds.find((crd) => crd.spec.names.kind === kind) ?? null
   }
 
   sourceUrl(resource: ImageUpdateAutomation): string {
     const name = resource.spec.sourceRef.name
     const ns = resource.spec.sourceRef.namespace ?? resource.metadata.namespace
-    const kind = lowerAndPluralize( resource.spec.sourceRef.kind)
+    const kind = lowerAndPluralize(resource.spec.sourceRef.kind)
     const crd = this.getCrd(resource.spec.sourceRef.kind)
     const apiVersion = crd?.spec.versions?.find((v: any) => v.storage === true)?.name
     const group = crd?.spec.group
 
-    if(!apiVersion || !group) return ''
+    if (!apiVersion || !group) return ''
 
     return `/apis/${group}/${apiVersion}/namespaces/${ns}/${kind}/${name}`
   }
 
   async componentDidMount() {
-    crdStore.loadAll().then(l => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
+    crdStore.loadAll().then((l) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }))
   }
 
   render() {
@@ -53,7 +58,13 @@ export class FluxCDImageUpdateAutomationDetails extends React.Component<Renderer
       <div>
         <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
         <DrawerItem name="Source">
-          <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              Renderer.Navigation.showDetails(this.sourceUrl(object), true)
+            }}
+          >
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}
           </a>
         </DrawerItem>
@@ -61,4 +72,3 @@ export class FluxCDImageUpdateAutomationDetails extends React.Component<Renderer
     )
   }
 }
-

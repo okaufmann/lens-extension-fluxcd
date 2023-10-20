@@ -44,7 +44,7 @@ export class FluxCDReceiverDetails extends React.Component<Renderer.Component.Ku
   }
 
   async componentDidMount() {
-    crdStore.loadAll().then(l => this.setState({ crds: l }));
+    crdStore.loadAll().then(l => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
   }
 
 

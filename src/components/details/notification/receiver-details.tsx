@@ -1,7 +1,7 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { Receiver } from "../../../k8s/fluxcd/notifications/receiver";
-import { getStatusClass, getStatusText, lowerAndPluralize } from "../../utils";
+import { getStatusClass, getStatusText, lowerAndPluralize } from "../../../utils";
 import { crdStore } from "../../../k8s/core/crd";
 
 interface ReceiverDetailsState {
@@ -37,8 +37,10 @@ export class FluxCDReceiverDetails extends React.Component<Renderer.Component.Ku
     const ns = resource.namespace ?? this.props.object.metadata.namespace
     const kind = lowerAndPluralize( resource.kind)
     const crd = this.getCrd(resource.kind)
-    const apiVersion = crd.spec.versions.find((v: any) => v.storage === true).name
-    const group = crd.spec.group
+    const apiVersion = crd?.spec.versions?.find((v: any) => v.storage === true)?.name
+    const group = crd?.spec.group
+
+    if(!apiVersion || !group) return ''
 
     return `/apis/${group}/${apiVersion}/namespaces/${ns}/${kind}/${name}`
   }

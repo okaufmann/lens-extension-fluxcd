@@ -16,11 +16,11 @@ const {
 
 enum sortBy {
   name = "name",
-  url = "url",
   namespace = "namespace",
   status = "status",
   ready = "ready",
   age = "age",
+  chart = "chart",
 }
 
 @observer
@@ -34,8 +34,8 @@ export class FluxCDHelmCharts extends React.Component<{ extension: Renderer.Lens
         sortingCallbacks={{
           [sortBy.name]: (helmChart: HelmChart) => helmChart.getName(),
           [sortBy.namespace]: (helmChart: HelmChart) => helmChart.getNs(),
-          [sortBy.url]: (helmChart: HelmChart) => helmChart.spec.url,
           [sortBy.ready]: (helmChart: HelmChart) => getStatusText(helmChart),
+          [sortBy.chart]: (helmChart: HelmChart) => helmChart.spec.chart,
           [sortBy.status]: (helmChart: HelmChart) => getStatusMessage(helmChart),
           [sortBy.age]: (helmChart: HelmChart) => helmChart.getAge(true, true, true),
         }}
@@ -46,16 +46,16 @@ export class FluxCDHelmCharts extends React.Component<{ extension: Renderer.Lens
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
-          {title: "Url", className: "url", sortBy: sortBy.url},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
+          {title: "Chart", className: "chart", sortBy: sortBy.chart},
           {title: "Status", className: "status", sortBy: sortBy.status},
           {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
         renderTableContents={(helmChart: HelmChart) => [
           helmChart.getName(),
           helmChart.getNs(),
-          helmChart.spec.url,
           this.renderStatus(helmChart),
+          helmChart.spec.chart,
           getStatusMessage(helmChart),
           helmChart.getAge(),
         ]}

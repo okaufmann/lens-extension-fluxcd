@@ -21,6 +21,7 @@ import { FluxCDKustomizationDetails } from './src/components/details/kustomizati
 import { FluxCDReceiverDetails } from './src/components/details/imageautomation/receiver-details'
 import { FluxCDHelmChartDetails } from './src/components/details/sources/helm-chart-details'
 import { FluxCDHelmRepositoryDetails } from './src/components/details/sources/helm-repository-details'
+import { FluxCDGitRepositoryDetails } from './src/components/details/sources/git-repository-details'
 import { FluxCDHelmReleaseDetails } from './src/components/details/helm/helm-release-details'
 import { Kustomization } from './src/k8s/fluxcd/kustomization'
 import { Receiver } from "./src/k8s/fluxcd/notifications/receiver";
@@ -72,6 +73,14 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       priority: 10,
       components: {
         Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDHelmRepositoryDetails {...props} />
+      }
+    },
+    {
+      kind: "GitRepository",
+      apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"],
+      priority: 10,
+      components: {
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDGitRepositoryDetails {...props} />
       }
     },
     {

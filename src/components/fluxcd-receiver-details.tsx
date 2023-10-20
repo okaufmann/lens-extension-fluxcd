@@ -59,6 +59,7 @@ export class FluxCDReceiverDetails extends React.Component<Renderer.Component.Ku
           <Badge className={getStatusClass(object)} label={getStatusText(object)} />
         </DrawerItem>
         <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
+        <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
         <DrawerItem name="Webhook Path"><a href="#">{object.status?.webhookPath}</a></DrawerItem>
         <DrawerItem name="Events">
           {object.spec.events.map((e: string) => <li>{e}</li>)}

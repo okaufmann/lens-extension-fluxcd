@@ -61,6 +61,7 @@ export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.K
         <DrawerItem name="Version">{object.spec.version}</DrawerItem>
         <DrawerItem name="Interval">{object.spec.interval}</DrawerItem>
         <DrawerItem name="Reconcile Strategy">{object.spec.reconcileStrategy}</DrawerItem>
+        <DrawerItem name="Suspended">{object.spec.suspend === true ? 'Yes' : 'No'}</DrawerItem>
         <DrawerItem name="Source">
           <a href="#" onClick={e => { e.preventDefault(); Renderer.Navigation.showDetails(this.sourceUrl(object), true) }}>
             {object.spec.sourceRef.kind}:{object.spec.sourceRef.name}

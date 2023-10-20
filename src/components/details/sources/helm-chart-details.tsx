@@ -4,12 +4,11 @@ import { HelmChart } from "../../../k8s/fluxcd/sources/helmchart";
 import { getStatusClass, getStatusText, lowerAndPluralize } from "../../../utils";
 import { crdStore } from "../../../k8s/core/crd";
 
+const { Component: { DrawerItem, Badge } } = Renderer
+
 interface HelmChartDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
-
-const { Component: { DrawerItem, Badge } } = Renderer
-
 
 export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<HelmChart>, HelmChartDetailsState> {
   public readonly state: Readonly<HelmChartDetailsState> = {

@@ -4,12 +4,11 @@ import { HelmRelease } from "../../../k8s/fluxcd/helm/helmrelease";
 import { lowerAndPluralize } from "../../../utils";
 import { crdStore } from "../../../k8s/core/crd";
 
+const { Component: { DrawerItem } } = Renderer
+
 interface HelmReleaseDetailsState {
   crds: Renderer.K8sApi.CustomResourceDefinition[]
 }
-
-const { Component: { DrawerItem } } = Renderer
-
 
 export class FluxCDHelmReleaseDetails extends React.Component<Renderer.Component.KubeObjectDetailsProps<HelmRelease>, HelmReleaseDetailsState> {
   public readonly state: Readonly<HelmReleaseDetailsState> = {

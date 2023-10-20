@@ -1,4 +1,4 @@
-import { Renderer, Common } from "@k8slens/extensions";
+import { Renderer } from "@k8slens/extensions";
 import React from "react";
 import { ImageRepository } from "../../../k8s/fluxcd/image-automation/imagerepository";
 

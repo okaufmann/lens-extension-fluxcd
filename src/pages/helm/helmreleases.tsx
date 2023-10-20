@@ -20,6 +20,7 @@ enum sortBy {
   status = "status",
   ready = "ready",
   age = "age",
+  chartVersion = "chartVersion",
 }
 
 @observer
@@ -35,6 +36,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           [sortBy.name]: (helmRelease: HelmRelease) => helmRelease.getName(),
           [sortBy.namespace]: (helmRelease: HelmRelease) => helmRelease.getNs(),
           [sortBy.ready]: (helmRelease: HelmRelease) => getStatusText(helmRelease),
+          [sortBy.chartVersion]: (helmRelease: HelmRelease) => helmRelease.spec.chart.spec.version,
           [sortBy.status]: (helmRelease: HelmRelease) => getStatusMessage(helmRelease),
           [sortBy.age]: (helmRelease: HelmRelease) => helmRelease.getAge()
         }}
@@ -46,6 +48,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
+          {title: "Version", className: "version", sortBy: sortBy.chartVersion},
           {title: "Status", className: "status", sortBy: sortBy.status},
           {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
@@ -53,6 +56,7 @@ export class FluxCDHelmReleases extends React.Component<{ extension: Renderer.Le
           helmRelease.getName(),
           helmRelease.getNs(),
           this.renderStatus(helmRelease),
+          helmRelease.spec.chart.spec.version,
           getStatusMessage(helmRelease),
           helmRelease.getAge(),
         ]}

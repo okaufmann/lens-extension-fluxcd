@@ -89,7 +89,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
     },
     {
       kind: "GitRepository",
-      apiVersions: ["source.toolkit.fluxcd.io/v1beta1", "source.toolkit.fluxcd.io/v1beta2", "source.toolkit.fluxcd.io/v1"],
+      apiVersions: ["source.toolkit.fluxcd.io/v1"],
       priority: 10,
       components: {
         Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDGitRepositoryDetails {...props} />

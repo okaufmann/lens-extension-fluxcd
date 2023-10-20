@@ -32,7 +32,7 @@ export class FluxCDHelmChartDetails extends React.Component<Renderer.Component.K
 
   sourceUrl(resource: HelmChart): string {
     const name = resource.spec.sourceRef.name
-    const ns = resource.metadata.namespace ?? this.props.object.metadata.namespace
+    const ns = resource.spec.sourceRef.namespace ?? resource.metadata.namespace
     const kind = lowerAndPluralize( resource.spec.sourceRef.kind)
     const crd = this.getCrd(resource.spec.sourceRef.kind)
     const apiVersion = crd?.spec.versions?.find((v: any) => v.storage === true)?.name

@@ -24,7 +24,7 @@ import { FluxCDHelmChartDetails } from './src/components/details/sources/helm-ch
 import { FluxCDHelmRepositoryDetails } from './src/components/details/sources/helm-repository-details'
 import { FluxCDGitRepositoryDetails } from './src/components/details/sources/git-repository-details'
 import { FluxCDHelmReleaseDetails } from './src/components/details/helm/helm-release-details'
-import { FluxCDReceiverDetails } from './src/components/notification/receiver-details'
+import { FluxCDReceiverDetails } from './src/components/details/notification/receiver-details'
 import { FluxCDImageRepositoryDetails } from './src/components/details/imageautomation/image-repository-details'
 import { FluxCDImagePolicyDetails } from './src/components/details/imageautomation/image-policy-details'
 import { FluxCDImageUpdateAutomationDetails } from './src/components/details/imageautomation/image-update-automation-details'

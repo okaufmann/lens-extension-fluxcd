@@ -1,8 +1,8 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { Receiver } from "../../k8s/fluxcd/notifications/receiver";
+import { Receiver } from "../../../k8s/fluxcd/notifications/receiver";
 import { getStatusClass, getStatusText, lowerAndPluralize } from "../../utils";
-import { crdStore } from "../../k8s/core/crd";
+import { crdStore } from "../../../k8s/core/crd";
 
 interface ReceiverDetailsState {
   events: Renderer.K8sApi.KubeEvent[],
@@ -44,7 +44,7 @@ export class FluxCDReceiverDetails extends React.Component<Renderer.Component.Ku
   }
 
   async componentDidMount() {
-    crdStore.loadAll().then(l => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
+    crdStore.loadAll().then((l: any) => this.setState({ crds: l as Renderer.K8sApi.CustomResourceDefinition[] }));
   }
 
 

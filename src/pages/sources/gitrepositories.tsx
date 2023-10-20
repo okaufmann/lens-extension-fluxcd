@@ -16,9 +16,9 @@ const {
 
 enum sortBy {
   name = "name",
-  url = "url",
   namespace = "namespace",
   status = "status",
+  url = "url",
   ready = "ready",
   age = "age",
 }
@@ -34,8 +34,8 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
         sortingCallbacks={{
           [sortBy.name]: (gitRepository: GitRepository) => gitRepository.getName(),
           [sortBy.namespace]: (gitRepository: GitRepository) => gitRepository.getNs(),
-          [sortBy.url]: (gitRepository: GitRepository) => gitRepository.spec.url,
           [sortBy.ready]: (gitRepository: GitRepository) => getStatusText(gitRepository),
+          [sortBy.url]: (gitRepository: GitRepository) => gitRepository.spec.url,
           [sortBy.status]: (gitRepository: GitRepository) => getStatusMessage(gitRepository),
           [sortBy.age]: (gitRepository: GitRepository) => gitRepository.getAge()
         }}
@@ -46,16 +46,16 @@ export class FluxCDGitRepositories extends React.Component<{ extension: Renderer
         renderTableHeader={[
           {title: "Name", className: "name", sortBy: sortBy.name},
           {title: "Namespace", className: "namespace", sortBy: sortBy.namespace},
-          {title: "Url", className: "url", sortBy: sortBy.url},
           {title: "Ready", className: "ready", sortBy: sortBy.ready},
+          {title: "Url", className: "url", sortBy: sortBy.url},
           {title: "Status", className: "status", sortBy: sortBy.status},
           {title: "Age", className: "age", sortBy: sortBy.age},
         ]}
         renderTableContents={(gitRepository: GitRepository) => [
           gitRepository.getName(),
           gitRepository.getNs(),
-          gitRepository.spec.url,
           this.renderStatus(gitRepository),
+          gitRepository.spec.url,
           getStatusMessage(gitRepository),
           gitRepository.getAge(),
         ]}

@@ -1,3 +1,21 @@
+# [1.6.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.5.1...v1.6.0) (2023-10-21)
+
+
+### Features
+
+* improve display of events and wildcard event filters ([cec0796](https://github.com/okaufmann/lens-extension-fluxcd/commit/cec0796d7dc8ad6c865dc17ff68ecaff1dc8d320))
+
+
+
+## [1.5.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.5.0...v1.5.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* git repo detail page registration ([f84e4b5](https://github.com/okaufmann/lens-extension-fluxcd/commit/f84e4b555f1b774c7c2b278cb36938b7f3cc2b07))
+
+
+
 # [1.5.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.4.1...v1.5.0) (2023-10-21)
 
 
@@ -43,42 +61,6 @@
 
 * add detail page for flux receiver ([723d783](https://github.com/okaufmann/lens-extension-fluxcd/commit/723d783513f7c3448a4c1b0ca70f7ba56600cf0f))
 * add type columns to provider and receiver pages ([f283a4d](https://github.com/okaufmann/lens-extension-fluxcd/commit/f283a4dacd8c97c74204a8ef28ef3a11e6107a7d))
-
-
-
-# [1.3.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.2.0...v1.3.0) (2023-10-18)
-
-
-### Bug Fixes
-
-* remove duplicated contents ([edc45ab](https://github.com/okaufmann/lens-extension-fluxcd/commit/edc45ab5e6ab9bb8452f1333f9616e368825cc71))
-
-
-### Features
-
-* add reconcile and suspend options to all supported crds ([6978f6a](https://github.com/okaufmann/lens-extension-fluxcd/commit/6978f6a13886118b490f76fed3535b8eda48675b))
-
-
-
-# [1.2.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.1.0...v1.2.0) (2023-10-18)
-
-
-### Bug Fixes
-
-* namespace name ([0bb077e](https://github.com/okaufmann/lens-extension-fluxcd/commit/0bb077ecb99cad751e758b3a585f5cd815e9b219))
-* source ref links for kustomizations ([916f95a](https://github.com/okaufmann/lens-extension-fluxcd/commit/916f95a78c0fc3abcd342735ddf3909eee2542e2))
-* updated reference ([c42b9f6](https://github.com/okaufmann/lens-extension-fluxcd/commit/c42b9f6ef9467da64f9df94f9e700eff01c99880))
-
-
-### Features
-
-* add helm charts ([90e2abf](https://github.com/okaufmann/lens-extension-fluxcd/commit/90e2abf0760a149ecd929d9d9ff4a69fc9262868))
-* add image policies page ([9197e74](https://github.com/okaufmann/lens-extension-fluxcd/commit/9197e74ff0af4636fc5182101ed1837be4b3d941))
-* add image update automations page ([5d24b6e](https://github.com/okaufmann/lens-extension-fluxcd/commit/5d24b6e36ebabdb32d67f45877407155bf97dcd6))
-* add notification pages ([ef136f3](https://github.com/okaufmann/lens-extension-fluxcd/commit/ef136f34efbde1bc746aa3ec8d1dcee6412f1d83))
-* add oci repositories page ([7720eb7](https://github.com/okaufmann/lens-extension-fluxcd/commit/7720eb727f78eed55177f024fadeceb09a3c6117))
-* add pie charts for all crds ([20ce57e](https://github.com/okaufmann/lens-extension-fluxcd/commit/20ce57eb08714eca04b273883c1474e30b094285))
-* link to extension pages ([0d95ef6](https://github.com/okaufmann/lens-extension-fluxcd/commit/0d95ef61274d71476f584f2e41299a8b4747c587))
 
 
 

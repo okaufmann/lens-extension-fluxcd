@@ -1,3 +1,12 @@
+## [1.6.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.6.0...v1.6.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* set id to release action task ([a9e0c5c](https://github.com/okaufmann/lens-extension-fluxcd/commit/a9e0c5c72d109d8978223df64211512855f4f7cc))
+
+
+
 # [1.6.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.5.1...v1.6.0) (2023-10-21)
 
 
@@ -51,16 +60,6 @@
 
 
 ## [1.4.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.4.0...v1.4.1) (2023-10-18)
-
-
-
-# [1.4.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.3.0...v1.4.0) (2023-10-18)
-
-
-### Features
-
-* add detail page for flux receiver ([723d783](https://github.com/okaufmann/lens-extension-fluxcd/commit/723d783513f7c3448a4c1b0ca70f7ba56600cf0f))
-* add type columns to provider and receiver pages ([f283a4d](https://github.com/okaufmann/lens-extension-fluxcd/commit/f283a4dacd8c97c74204a8ef28ef3a11e6107a7d))
 
 
 

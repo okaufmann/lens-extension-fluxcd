@@ -49,6 +49,9 @@ jobs:
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
+      - name: Build
+        run: npm run build
+
       - name: Publish
         uses: JS-DevTools/npm-publish@v3
         if: ${{ steps.changelog.outputs.skipped == 'false' }}

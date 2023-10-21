@@ -1,4 +1,4 @@
-name: Fix code style issues
+name: Release
 
 on:
   push:

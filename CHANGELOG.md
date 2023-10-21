@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.0...v1.8.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* trigger release ([a61f8d6](https://github.com/okaufmann/lens-extension-fluxcd/commit/a61f8d60e0be8fd82f17d9fa7fe5c11f192e1605))
+
+
+
 # [1.8.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.1...v1.8.0) (2023-10-21)
 
 
@@ -37,15 +46,6 @@
 ### Bug Fixes
 
 * set id to release action task ([a9e0c5c](https://github.com/okaufmann/lens-extension-fluxcd/commit/a9e0c5c72d109d8978223df64211512855f4f7cc))
-
-
-
-# [1.6.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.5.1...v1.6.0) (2023-10-21)
-
-
-### Features
-
-* improve display of events and wildcard event filters ([cec0796](https://github.com/okaufmann/lens-extension-fluxcd/commit/cec0796d7dc8ad6c865dc17ff68ecaff1dc8d320))
 
 
 

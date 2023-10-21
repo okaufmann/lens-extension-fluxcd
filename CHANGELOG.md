@@ -1,3 +1,13 @@
+# [1.7.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.6.1...v1.7.0) (2023-10-21)
+
+
+### Features
+
+* automatically publish to npm ([f1f4f62](https://github.com/okaufmann/lens-extension-fluxcd/commit/f1f4f6252372f525c8d792eefed480a1e40ff4ab))
+* run npm install before publish the release to align package-lock.json ([3749574](https://github.com/okaufmann/lens-extension-fluxcd/commit/3749574be462dd7a64dbd7ba01ad604f6bfd8037))
+
+
+
 ## [1.6.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.6.0...v1.6.1) (2023-10-21)
 
 
@@ -56,10 +66,6 @@
 * extend details for helm repository ([25a3850](https://github.com/okaufmann/lens-extension-fluxcd/commit/25a3850d2e3bf808ce8c44737b6c8712896ce78a))
 * make helm repo url clickable and cleanup duplicated properties ([fa7a25e](https://github.com/okaufmann/lens-extension-fluxcd/commit/fa7a25e37746ab0f13dd4373edb4a7d50a5ab9ac))
 * move helm release page to correct folder and add chart version ([68f39f1](https://github.com/okaufmann/lens-extension-fluxcd/commit/68f39f1b6bedade8e43e0fa1cfc47739119a1770))
-
-
-
-## [1.4.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.4.0...v1.4.1) (2023-10-18)
 
 
 

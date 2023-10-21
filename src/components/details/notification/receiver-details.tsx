@@ -69,7 +69,9 @@ export class FluxCDReceiverDetails extends React.Component<
         </DrawerItem>
         <DrawerItem name="Events">
           {object.spec.events.map((e: string, index: number) => (
-            <li key={index}>{e}</li>
+            <li key={index}>
+              <Badge label={e} />
+            </li>
           ))}
         </DrawerItem>
         <DrawerItem name="Resources">

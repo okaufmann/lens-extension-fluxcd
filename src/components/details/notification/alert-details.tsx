@@ -10,7 +10,7 @@ interface AlertDetailsState {
 }
 
 const {
-  Component: { DrawerItem },
+  Component: { DrawerItem, Badge },
 } = Renderer
 
 export class FluxCDAlertDetails extends React.Component<
@@ -76,9 +76,7 @@ export class FluxCDAlertDetails extends React.Component<
           {object.spec.eventSources.map((eventSource: any, index: number) => (
             <li key={index}>
               {eventSource.name === '*' ? (
-                <span>
-                  {eventSource.kind}:{eventSource.name}
-                </span>
+                <Badge label={`${eventSource.kind}:${eventSource.name}`} />
               ) : (
                 <a
                   href="#"

@@ -1,4 +1,15 @@
-# Changelogs
+# [1.8.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.1...v1.8.0) (2023-10-21)
+
+
+### Bug Fixes
+
+* build process ([088f6c3](https://github.com/okaufmann/lens-extension-fluxcd/commit/088f6c369948f9d4aa2fde7e8974aa6e14b36bcc))
+
+
+### Features
+
+* add pre-commit config ([180153b](https://github.com/okaufmann/lens-extension-fluxcd/commit/180153bf26afb9c893b198a19b443769cb343faf))
+
 
 
 ## [1.7.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.0...v1.7.1) (2023-10-21)
@@ -35,15 +46,6 @@
 ### Features
 
 * improve display of events and wildcard event filters ([cec0796](https://github.com/okaufmann/lens-extension-fluxcd/commit/cec0796d7dc8ad6c865dc17ff68ecaff1dc8d320))
-
-
-
-## [1.5.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.5.0...v1.5.1) (2023-10-21)
-
-
-### Bug Fixes
-
-* git repo detail page registration ([f84e4b5](https://github.com/okaufmann/lens-extension-fluxcd/commit/f84e4b555f1b774c7c2b278cb36938b7f3cc2b07))
 
 
 

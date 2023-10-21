@@ -15,5 +15,4 @@ Specify the Lens version if applicable.
 
 ## Environment
 - OS:
-- Browser:
 - Other relevant environment details:

@@ -36,7 +36,7 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          pre-commit: scripts/pre-commit.js
+          pre-commit: scripts/ci-pre-commit.js
           github-token: ${{ secrets.github_token }}
 
       - name: Create Release

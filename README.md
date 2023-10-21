@@ -2,6 +2,8 @@
 
 Add FluxCD support to Lens. https://fluxcd.io/
 
+Supports FluxCD v2.0.0 and above.
+
 The following features are available:
 
 * Dashboard of all FluxCD Application components and Events.

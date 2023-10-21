@@ -19,10 +19,24 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
+          pre-commit: scripts/pre-commit.sh
           github-token: ${{ secrets.github_token }}
 
       - name: Create Release

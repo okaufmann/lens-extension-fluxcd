@@ -1,3 +1,6 @@
+# Changelogs
+
+
 ## [1.7.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.0...v1.7.1) (2023-10-21)
 
 

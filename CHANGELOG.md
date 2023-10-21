@@ -1,3 +1,12 @@
+## [1.8.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.1...v1.8.2) (2023-10-21)
+
+
+### Bug Fixes
+
+* build before publish ([4bcbcab](https://github.com/okaufmann/lens-extension-fluxcd/commit/4bcbcabf78e55144d50526acbb6105e5c2222c80))
+
+
+
 ## [1.8.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.0...v1.8.1) (2023-10-21)
 
 
@@ -37,15 +46,6 @@
 
 * automatically publish to npm ([f1f4f62](https://github.com/okaufmann/lens-extension-fluxcd/commit/f1f4f6252372f525c8d792eefed480a1e40ff4ab))
 * run npm install before publish the release to align package-lock.json ([3749574](https://github.com/okaufmann/lens-extension-fluxcd/commit/3749574be462dd7a64dbd7ba01ad604f6bfd8037))
-
-
-
-## [1.6.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.6.0...v1.6.1) (2023-10-21)
-
-
-### Bug Fixes
-
-* set id to release action task ([a9e0c5c](https://github.com/okaufmann/lens-extension-fluxcd/commit/a9e0c5c72d109d8978223df64211512855f4f7cc))
 
 
 

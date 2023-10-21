@@ -4,11 +4,9 @@ Add FluxCD support to Lens. https://fluxcd.io/
 
 The following features are available:
 
-* FluxCD dashboard of Flux Application components (Kustomizations and HelmReleases) and Sources (GitRepositories, HelmRepositories, HelmCharts and Buckets)
-* FluxCD resource menus
-  * Reconcile
-  * Suspend/Resume
-* FluxCD Kustomization details
+* Dashboard of all FluxCD Application components and Events.
+* Resource menus to reconcile, sync, and automate FluxCD resources.
+* Show extended details for FluxCD resources.
 
 ## Screenshots
 
@@ -37,6 +35,12 @@ To install the extension for development
 mkdir -p ~/.k8slens/extensions
 git clone https://github.com/okaufmann/lens-extension-fluxcd.git
 ln -s $(pwd) ~/.k8slens/extensions/lens-extension-fluxcd
+```
+
+Or you can open the Extensions view in Lens and click "Install from URL..." and paste the following:
+
+```
+lens-extension-fluxcd
 ```
 
 ## Build

@@ -37,7 +37,7 @@ export class FluxCDReceivers extends React.Component<{ extension: Renderer.LensE
           [sortBy.status]: (receiver: Receiver) => getStatusMessage(receiver),
           [sortBy.age]: (receiver: Receiver) => receiver.getCreationTimestamp(),
         }}
-        searchFilters={[(receiver: Receiver) => receiver.getSearchFields()]}
+        searchFilters={[(receiver: Receiver) => [...receiver.getSearchFields(), receiver.status?.webhookPath]]}
         renderHeaderTitle="Receiver"
         renderTableHeader={[
           { title: 'Name', className: 'name', sortBy: sortBy.name },

@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.2...v1.9.0) (2023-10-28)
+
+
+### Features
+
+* add receiver's webhook path to searchable fields ([2868ab5](https://github.com/okaufmann/lens-extension-fluxcd/commit/2868ab5256ba38ec3c9dcaaf1901820ab2743fd0))
+
+
+
 ## [1.8.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.1...v1.8.2) (2023-10-21)
 
 
@@ -36,16 +45,6 @@
 ### Bug Fixes
 
 * build process ([1654ff4](https://github.com/okaufmann/lens-extension-fluxcd/commit/1654ff49d751b4f4b6d166599da945651a588bb3))
-
-
-
-# [1.7.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.6.1...v1.7.0) (2023-10-21)
-
-
-### Features
-
-* automatically publish to npm ([f1f4f62](https://github.com/okaufmann/lens-extension-fluxcd/commit/f1f4f6252372f525c8d792eefed480a1e40ff4ab))
-* run npm install before publish the release to align package-lock.json ([3749574](https://github.com/okaufmann/lens-extension-fluxcd/commit/3749574be462dd7a64dbd7ba01ad604f6bfd8037))
 
 
 

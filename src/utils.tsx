@@ -1,5 +1,6 @@
 import moment from 'moment'
-import { HelmRelease } from './k8s/fluxcd/helm/helmrelease'
+import { Renderer } from '@k8slens/extensions'
+const KubeObject = Renderer.K8sApi.KubeObject
 
 /**
  * This function formats durations in a more human readable form.
@@ -104,7 +105,7 @@ export function lowerAndPluralize(str: string) {
   }
 }
 
-export function getStatusClass(obj: HelmRelease) {
+export function getStatusClass<T extends Renderer.K8sApi.KubeObject>(obj: T) {
   const status = getStatus(obj)
   switch (status) {
     case 'ready':
@@ -120,7 +121,7 @@ export function getStatusClass(obj: HelmRelease) {
   }
 }
 
-export function getStatusText(obj: HelmRelease): string {
+export function getStatusText<T extends Renderer.K8sApi.KubeObject>(obj: T): string {
   const status = getStatus(obj)
   switch (status) {
     case 'ready':
@@ -136,13 +137,13 @@ export function getStatusText(obj: HelmRelease): string {
   }
 }
 
-export function getStatusMessage(obj: HelmRelease): string {
-  return obj.status?.conditions.find((c: any) => c.type === 'Ready')?.message || 'unknown'
+export function getStatusMessage<T extends Renderer.K8sApi.KubeObject>(obj: T): string {
+  return obj.status?.conditions?.find((c: any) => c.type === 'Ready')?.message || 'unknown'
 }
 
-function getStatus(obj: HelmRelease) {
+function getStatus<T extends Renderer.K8sApi.KubeObject>(obj: T) {
   if (obj.spec.suspend) return 'suspended'
-  if (obj.status?.conditions.find((c: any) => c.type === 'Ready').status === 'True') return 'ready'
-  if (obj.status?.conditions.find((c: any) => c.type === 'Ready').status === 'False') return 'not-ready'
+  if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'True') return 'ready'
+  if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'False') return 'not-ready'
   return 'in-progress'
 }

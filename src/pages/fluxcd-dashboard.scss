@@ -1,13 +1,9 @@
-.FluxWorkloads,
-.FluxPanels {
+.flux-workloads {
   display: grid;
   grid-template-columns: repeat(auto-fit, 180px);
   justify-content: space-evenly;
-}
-
-.FluxPanels {
-  grid-template-columns: repeat(auto-fill, 385px);
-  justify-content: flex-start;
+  grid-gap: 8px;
+  padding: 16px;
 }
 
 .floatRight {
@@ -29,6 +25,14 @@
 
 .nowrap {
   white-space: nowrap;
+}
+
+.chart-title {
+  color: var(--colorInfo);
+}
+
+.chart-item {
+  margin-bottom: 16px;
 }
 
 .pb-3 {

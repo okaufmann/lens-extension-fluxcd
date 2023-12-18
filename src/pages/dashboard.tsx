@@ -173,7 +173,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
           </header>
 
           {/* add all crd from flux here as chart  */}
-          <div className="grid flex FluxWorkloads pb-3">
+          <div className="grid grow algin-center flux-workloads">
             {this.getChart('Kustomizations', kustomizationStore.items)}
             {this.getChart('Helm releases', helmReleaseStore.items)}
 
@@ -184,7 +184,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
             {this.getChart('OCI Repositories', ociRepositoryStore.items)}
             {this.getChart('Image Repositories', imageRepositoryStore.items)}
             {this.getChart('Image Policies', imagePolicyStore.items)}
-            {this.getChart('Image Update Automations', imageUpdateAutomationStore.items)}
+            {this.getChart('Image Automations', imageUpdateAutomationStore.items)}
             {this.getChart('Alerts', alertStore.items)}
             {this.getChart('Providers', providerStore.items)}
             {this.getChart('Receivers', receiverStore.items)}

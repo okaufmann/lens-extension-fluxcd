@@ -1,3 +1,13 @@
+## [1.9.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.0...v1.9.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* helm repository detail view for oci repos ([d82e1f3](https://github.com/okaufmann/lens-extension-fluxcd/commit/d82e1f37d6bbf6660c47fdbf5d77b5f822bd2ba8))
+* missing status property and use generic types ([a608fdb](https://github.com/okaufmann/lens-extension-fluxcd/commit/a608fdb680d2e593140cc46ef4e4ae578e5f0092))
+
+
+
 # [1.9.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.2...v1.9.0) (2023-10-28)
 
 
@@ -36,15 +46,6 @@
 ### Features
 
 * add pre-commit config ([180153b](https://github.com/okaufmann/lens-extension-fluxcd/commit/180153bf26afb9c893b198a19b443769cb343faf))
-
-
-
-## [1.7.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.0...v1.7.1) (2023-10-21)
-
-
-### Bug Fixes
-
-* build process ([1654ff4](https://github.com/okaufmann/lens-extension-fluxcd/commit/1654ff49d751b4f4b6d166599da945651a588bb3))
 
 
 

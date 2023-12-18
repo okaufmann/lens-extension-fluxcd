@@ -133,7 +133,7 @@ export function getStatusText<T extends Renderer.K8sApi.KubeObject>(obj: T): str
     case 'in-progress':
       return 'In Progress'
     default:
-      return 'unknown'
+      return 'Unknown'
   }
 }
 
@@ -145,5 +145,6 @@ function getStatus<T extends Renderer.K8sApi.KubeObject>(obj: T) {
   if (obj.spec.suspend) return 'suspended'
   if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'True') return 'ready'
   if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'False') return 'not-ready'
-  return 'in-progress'
+  if (obj.status?.conditions) return 'in-progress'
+  return ''
 }

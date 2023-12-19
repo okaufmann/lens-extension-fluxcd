@@ -12,13 +12,13 @@ The following features are available:
 
 ## Screenshots
 
-Dashboard
+### Dashboard
 ![./docs/images/dashboard.png](./docs/images/dashboard.png)
 
-Details
+### Details
 ![./docs/images/details.png](./docs/images/details.png)
 
-Events
+### Events
 ![./docs/images/events.png](./docs/images/events.png)
 
 ## Install

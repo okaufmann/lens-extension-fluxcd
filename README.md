@@ -4,15 +4,13 @@
 ![Linter](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/eslint.yml/badge.svg)
 ![Release](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/release.yml/badge.svg)
 
-Add FluxCD support to Lens. https://fluxcd.io/
+This extension integrates FluxCD support into Lens. [FluxCD](https://fluxcd.io/) v2.0.0 or higher is supported.
 
-Supports FluxCD v2.0.0 and above.
+Features include:
 
-The following features are available:
-
-* Dashboard of all FluxCD Application components and Events.
-* Resource menus to reconcile, sync, and automate FluxCD resources.
-* Show extended details for FluxCD resources.
+- Comprehensive dashboard for FluxCD Application components and Events.
+- Resource menus for reconciling, syncing, and automating FluxCD resources.
+- Detailed views of FluxCD resource information.
 
 ## Screenshots
 

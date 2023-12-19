@@ -19,12 +19,6 @@ The following features are available:
 ### Dashboard
 ![./docs/images/dashboard.png](./docs/images/dashboard.png)
 
-### Details
-![./docs/images/details.png](./docs/images/details.png)
-
-### Events
-![./docs/images/events.png](./docs/images/events.png)
-
 ## Install
 
 To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `lens-extension-fluxcd`.

@@ -1,3 +1,12 @@
+## [1.9.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.1...v1.9.2) (2023-12-19)
+
+
+### Bug Fixes
+
+* add npm install ([35f8c25](https://github.com/okaufmann/lens-extension-fluxcd/commit/35f8c256cdab93b73acbdb4445713b815e4b72fb))
+
+
+
 ## [1.9.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.0...v1.9.1) (2023-12-18)
 
 
@@ -32,20 +41,6 @@
 ### Bug Fixes
 
 * trigger release ([a61f8d6](https://github.com/okaufmann/lens-extension-fluxcd/commit/a61f8d60e0be8fd82f17d9fa7fe5c11f192e1605))
-
-
-
-# [1.8.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.7.1...v1.8.0) (2023-10-21)
-
-
-### Bug Fixes
-
-* build process ([088f6c3](https://github.com/okaufmann/lens-extension-fluxcd/commit/088f6c369948f9d4aa2fde7e8974aa6e14b36bcc))
-
-
-### Features
-
-* add pre-commit config ([180153b](https://github.com/okaufmann/lens-extension-fluxcd/commit/180153bf26afb9c893b198a19b443769cb343faf))
 
 
 

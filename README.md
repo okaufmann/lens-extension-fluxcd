@@ -1,5 +1,9 @@
 # Lens FluxCD Extension
 
+[![npm version](https://badge.fury.io/js/lens-extension-fluxcd.svg)](https://badge.fury.io/js/lens-extension-fluxcd)
+![Linter](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/eslint.yml/badge.svg)
+![Release](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/release.yml/badge.svg)
+
 Add FluxCD support to Lens. https://fluxcd.io/
 
 Supports FluxCD v2.0.0 and above.

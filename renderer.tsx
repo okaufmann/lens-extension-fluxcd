@@ -225,12 +225,6 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       },
     },
     {
-      id: 'imagerepositories',
-      components: {
-        Page: () => <FluxCDHelmRepositories extension={this} />,
-      },
-    },
-    {
       id: 'imagepolicies',
       components: {
         Page: () => <FluxCDImagePolicies extension={this} />,

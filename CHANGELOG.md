@@ -1,3 +1,12 @@
+# [1.10.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.2...v1.10.0) (2024-06-01)
+
+
+### Features
+
+* support helm release version helm.toolkit.fluxcd.io/v2 ([39d9ef6](https://github.com/okaufmann/lens-extension-fluxcd/commit/39d9ef66279ff1b1e1402170f5df518d0bb1c9d5))
+
+
+
 ## [1.9.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.1...v1.9.2) (2023-12-19)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * build before publish ([4bcbcab](https://github.com/okaufmann/lens-extension-fluxcd/commit/4bcbcabf78e55144d50526acbb6105e5c2222c80))
-
-
-
-## [1.8.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.0...v1.8.1) (2023-10-21)
-
-
-### Bug Fixes
-
-* trigger release ([a61f8d6](https://github.com/okaufmann/lens-extension-fluxcd/commit/a61f8d60e0be8fd82f17d9fa7fe5c11f192e1605))
 
 
 

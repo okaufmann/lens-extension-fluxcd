@@ -1,6 +1,6 @@
 {
   "name": "lens-extension-fluxcd",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "description": "Lens extension for FluxCD",
   "contributors": [
     {

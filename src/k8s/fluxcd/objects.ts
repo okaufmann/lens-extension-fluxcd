@@ -22,7 +22,11 @@ export const fluxcdObjects = [
     ],
     api: kustomizationApi,
   },
-  { kind: 'HelmRelease', apiVersions: ['helm.toolkit.fluxcd.io/v2beta1'], api: helmReleaseApi },
+  {
+    kind: 'HelmRelease',
+    apiVersions: ['helm.toolkit.fluxcd.io/v2beta1', 'helm.toolkit.fluxcd.io/v2'],
+    api: helmReleaseApi,
+  },
   {
     kind: 'GitRepository',
     apiVersions: [

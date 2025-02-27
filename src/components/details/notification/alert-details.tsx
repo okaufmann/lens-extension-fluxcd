@@ -73,7 +73,7 @@ export class FluxCDAlertDetails extends React.Component<
           </a>
         </DrawerItem>
         <DrawerItem name="Resources">
-          {object.spec.eventSources.map((eventSource: any, index: number) => (
+          {object.spec.eventSources.map((eventSource, index: number) => (
             <li key={index}>
               {eventSource.name === '*' ? (
                 <Badge label={`${eventSource.kind}:${eventSource.name}`} />

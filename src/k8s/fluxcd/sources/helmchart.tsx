@@ -5,7 +5,20 @@ const { KubeApi } = Renderer.K8sApi
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class HelmChart extends KubeObject {
+export class HelmChart extends KubeObject<
+  any,
+  any,
+  {
+    chart: string
+    suspend: boolean
+    version: string
+    reconcileStrategy: string
+    interval: string
+    timeout: string
+    values: string
+    sourceRef: { kind: string; name: string; namespace: string }
+  }
+> {
   static readonly kind = 'HelmChart'
   static readonly namespaced = true
   static readonly apiBase = '/apis/source.toolkit.fluxcd.io/v1beta1/helmcharts'

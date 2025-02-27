@@ -5,7 +5,11 @@ const { KubeApi } = Renderer.K8sApi
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class ImageRepository extends KubeObject {
+export class ImageRepository extends KubeObject<
+  any,
+  any,
+  { image: string; provider: string; interval: string; suspend: boolean }
+> {
   static readonly kind = 'ImageRepository'
   static readonly namespaced = true
   static readonly apiBase = '/apis/image.toolkit.fluxcd.io/v1beta2/imagerepositories'

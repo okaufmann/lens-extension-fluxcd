@@ -5,7 +5,24 @@ const { KubeApi } = Renderer.K8sApi
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class Receiver extends KubeObject {
+export class Receiver extends KubeObject<
+  any,
+  any,
+  {
+    type: string
+    interval: string
+    suspend: boolean
+    slack: { channel: string }
+    events: string[]
+    resources: [
+      {
+        kind: string
+        name: string
+        namespace: string
+      },
+    ]
+  }
+> {
   static readonly kind = 'Receiver'
   static readonly namespaced = true
   static readonly apiBase = '/apis/notification.toolkit.fluxcd.io/v1beta2/receivers'

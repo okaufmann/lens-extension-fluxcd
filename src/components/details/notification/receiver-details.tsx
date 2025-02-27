@@ -75,7 +75,7 @@ export class FluxCDReceiverDetails extends React.Component<
           ))}
         </DrawerItem>
         <DrawerItem name="Resources">
-          {object.spec.resources.map((resource: any, index: number) => (
+          {object.spec.resources.map((resource, index: number) => (
             <li key={index}>
               <a
                 href="#"

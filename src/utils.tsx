@@ -137,14 +137,26 @@ export function getStatusText<T extends Renderer.K8sApi.KubeObject>(obj: T): str
   }
 }
 
-export function getStatusMessage<T extends Renderer.K8sApi.KubeObject>(obj: T): string {
-  return obj.status?.conditions?.find((c: any) => c.type === 'Ready')?.message || 'unknown'
+export function getStatusMessage<
+  T extends Renderer.K8sApi.KubeObject<any, { conditions?: { type: string; message: string }[] }, any>,
+>(obj: T): string {
+  return obj.status?.conditions?.find((c) => c.type === 'Ready')?.message || 'unknown'
 }
 
-function getStatus<T extends Renderer.K8sApi.KubeObject>(obj: T) {
-  if (obj.spec.suspend) return 'suspended'
-  if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'True') return 'ready'
-  if (obj.status?.conditions?.find((c: any) => c.type === 'Ready').status === 'False') return 'not-ready'
+function getStatus<
+  T extends Renderer.K8sApi.KubeObject<
+    any,
+    { conditions?: { type: string; status?: string }[] },
+    { suspend?: boolean }
+  >,
+>(obj: T): string {
+  if (obj.spec?.suspend) return 'suspended'
+
+  const readyCondition = obj.status?.conditions?.find((c) => c.type === 'Ready')
+
+  if (readyCondition?.status === 'True') return 'ready'
+  if (readyCondition?.status === 'False') return 'not-ready'
   if (obj.status?.conditions) return 'in-progress'
+
   return ''
 }

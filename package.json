@@ -40,6 +40,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@freelensapp/extensions": "^1.0.0",
+    "@freelensapp/kube-object": "^1.0.0",
     "@types/chart.js": "^2.9.37",
     "@types/node": "^16.0.0",
     "@types/react": "^16.9.35",

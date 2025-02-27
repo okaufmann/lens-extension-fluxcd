@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { ImageUpdateAutomation } from '../../../k8s/fluxcd/image-automation/imageupdateautomation'
 import { lowerAndPluralize } from '../../../utils'

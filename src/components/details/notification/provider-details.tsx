@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { Provider } from '../../../k8s/fluxcd/notifications/provider'
 import { crdStore } from '../../../k8s/core/crd'

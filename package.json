@@ -19,7 +19,7 @@
     "directory": "fluxcd"
   },
   "engines": {
-    "lens": "^6.0.0"
+    "freelens": "^0.1.0"
   },
   "main": "dist/main.js",
   "renderer": "dist/renderer.js",
@@ -39,7 +39,7 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@k8slens/extensions": "^5.5.4",
+    "@freelensapp/extensions": "^1.0.0",
     "@types/chart.js": "^2.9.37",
     "@types/node": "^16.0.0",
     "@types/react": "^16.9.35",

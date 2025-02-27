@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { HelmRelease } from '../../../k8s/fluxcd/helm/helmrelease'
 import { lowerAndPluralize } from '../../../utils'
@@ -56,6 +56,7 @@ export class FluxCDHelmReleaseDetails extends React.Component<
 
     return (
       <div>
+        {/* Link to Artifact hub! */}
         <DrawerItem name="Helm Chart">{object.spec.chart.spec.chart}</DrawerItem>
         <DrawerItem name="Version">{object.spec.chart.spec.version}</DrawerItem>
         <DrawerItem name="Chart Interval">{object.spec.chart.spec.interval}</DrawerItem>

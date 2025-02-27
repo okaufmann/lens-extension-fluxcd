@@ -1,4 +1,4 @@
-import { Renderer, Common } from '@k8slens/extensions'
+import { Renderer, Common } from '@freelensapp/extensions'
 import React from 'react'
 import { GitRepository } from '../../../k8s/fluxcd/sources/gitrepository'
 import { getStatusClass, getStatusText } from '../../../utils'

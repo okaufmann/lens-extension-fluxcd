@@ -1,7 +1,7 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import './pie-chart.scss'
-import { PieChartData } from '@k8slens/extensions/dist/src/extensions/renderer-api/components'
+import { PieChartData } from '@freelensapp/extensions/dist/src/extensions/renderer-api/components'
 
 const getStats = (objects: Renderer.K8sApi.KubeObject[]) => {
   const suspended = objects.filter((k) => k.spec.suspend === true).length

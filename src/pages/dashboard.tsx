@@ -1,5 +1,5 @@
-import { Renderer } from '@k8slens/extensions'
-import { KubeEvent } from '@k8slens/extensions/dist/src/common/k8s-api/endpoints'
+import { Renderer } from '@freelensapp/extensions'
+import { KubeEvent } from '@freelensapp/extensions/dist/src/common/k8s-api/endpoints'
 import { PieChart } from '../components/pie-chart'
 
 import React from 'react'

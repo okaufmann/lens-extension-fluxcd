@@ -1,5 +1,5 @@
 import React from 'react'
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const {
   Component: { MenuItem, Icon },

@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 const KubeObject = Renderer.K8sApi.KubeObject
 
 /**

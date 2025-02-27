@@ -72,6 +72,6 @@ import './pie-chart.scss'
 //   )
 // }
 
-export function PieChart(props: PieChartProps<Renderer.K8sApi.KubeObject>): React.ReactElement {
+export function PieChart(/*props: PieChartProps<Renderer.K8sApi.KubeObject>*/): React.ReactElement {
   return <div>Pie Charts not working yet</div>
 }

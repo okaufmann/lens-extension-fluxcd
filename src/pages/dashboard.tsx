@@ -1,6 +1,6 @@
 import { Renderer } from '@freelensapp/extensions'
 import { KubeEvent } from '@freelensapp/kube-object'
-import { PieChart } from '../components/pie-chart'
+// import { PieChart } from '../components/pie-chart'
 
 import React from 'react'
 const {
@@ -132,11 +132,7 @@ export class FluxCDDashboard extends React.Component<{ extension: Renderer.LensE
       return null
     }
 
-    return (
-      <div className="column">
-        <PieChart title={title} objects={objects} crd={crd} />
-      </div>
-    )
+    return <div className="column">{/* <PieChart title={title} objects={objects} crd={crd} /> */}</div>
   }
 
   async componentDidMount() {

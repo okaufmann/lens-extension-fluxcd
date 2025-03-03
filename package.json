@@ -19,7 +19,7 @@
     "directory": "fluxcd"
   },
   "engines": {
-    "freelens": "^0.1.0"
+    "freelens": "^1.0.0"
   },
   "main": "dist/main.js",
   "renderer": "dist/renderer.js",

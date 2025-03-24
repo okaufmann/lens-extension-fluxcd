@@ -4,7 +4,9 @@
 ![Linter](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/eslint.yml/badge.svg)
 ![Release](https://github.com/okaufmann/lens-extension-fluxcd/actions/workflows/release.yml/badge.svg)
 
-This extension integrates FluxCD support into Lens. [FluxCD](https://fluxcd.io/) v2.0.0 or higher is supported.
+***NOTE ⚠️: This extension was refactored to make it work with [Freelens](https://github.com/freelensapp/freelens) as in K8S Lens extension API was deprecated.***
+
+This extension integrates FluxCD support into [Freelens](https://github.com/freelensapp/freelens). [FluxCD](https://fluxcd.io/) v2.0.0 or higher is supported.
 
 Features include:
 
@@ -17,9 +19,10 @@ Features include:
 ### Dashboard
 ![./docs/images/dashboard.png](./docs/images/dashboard.png)
 
+
 ## Install
 
-To install open K8s Lens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `lens-extension-fluxcd`.
+To install open Freelens and go to Extensions (CTRL+SHIFT+E or CMD+SHIFT+E), and install `lens-extension-fluxcd`.
 
 or
 

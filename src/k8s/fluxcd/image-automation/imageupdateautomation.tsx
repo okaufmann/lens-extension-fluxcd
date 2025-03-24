@@ -1,11 +1,22 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const { KubeApi } = Renderer.K8sApi
 
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class ImageUpdateAutomation extends KubeObject {
+export class ImageUpdateAutomation extends KubeObject<
+  any,
+  any,
+  {
+    sourceRef: {
+      name: string
+      namespace: string
+      kind: string
+    }
+    interval: string
+  }
+> {
   static readonly kind = 'ImageUpdateAutomation'
   static readonly namespaced = true
   static readonly apiBase = '/apis/image.toolkit.fluxcd.io/v1beta1/imageupdateautomations'

@@ -1,11 +1,15 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const { KubeApi } = Renderer.K8sApi
 
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class Provider extends KubeObject {
+export class Provider extends KubeObject<
+  any,
+  any,
+  { suspend: boolean; type: string; secretRef: { name: string; namespace: string } }
+> {
   static readonly kind = 'Provider'
   static readonly namespaced = true
   static readonly apiBase = '/apis/notification.toolkit.fluxcd.io/v1beta2/providers'

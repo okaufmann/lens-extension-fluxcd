@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { Kustomization } from '../../k8s/fluxcd/kustomization'
 import { getStatusClass, getStatusText, lowerAndPluralize } from '../../utils'

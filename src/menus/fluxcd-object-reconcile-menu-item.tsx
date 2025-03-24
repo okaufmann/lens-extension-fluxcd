@@ -1,13 +1,21 @@
 import React from 'react'
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const {
   Component: { MenuItem, Icon },
 } = Renderer
 
+interface FluxCustomSpec {
+  suspend: boolean
+}
+
 export interface FluxcdObjectReconcileMenuItemProps
-  extends Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.KubeObject> {
-  api: Renderer.K8sApi.KubeApi<Renderer.K8sApi.KubeObject>
+  extends Renderer.Component.KubeObjectMenuProps<
+    Renderer.K8sApi.KubeObject<Renderer.K8sApi.KubeObjectMetadata, unknown, FluxCustomSpec | any>
+  > {
+  api: Renderer.K8sApi.KubeApi<
+    Renderer.K8sApi.KubeObject<Renderer.K8sApi.KubeObjectMetadata, unknown, FluxCustomSpec | any>
+  >
 }
 
 export function FluxcdObjectReconcileMenuItem(props: FluxcdObjectReconcileMenuItemProps) {

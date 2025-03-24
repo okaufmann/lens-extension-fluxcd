@@ -1,11 +1,27 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const { KubeApi } = Renderer.K8sApi
 
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class GitRepository extends KubeObject {
+export class GitRepository extends KubeObject<
+  any,
+  any,
+  {
+    url: string
+    interval: string
+    timeout: string
+    suspend: boolean
+    ref: {
+      branch: string
+      tag: string
+      semver: string
+      name: string
+      commit: string
+    }
+  }
+> {
   static readonly kind = 'GitRepository'
   static readonly namespaced = true
   static readonly apiBase = '/apis/source.toolkit.fluxcd.io/v1beta1/gitrepositories'

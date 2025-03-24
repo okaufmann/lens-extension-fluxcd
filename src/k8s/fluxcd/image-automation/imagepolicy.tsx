@@ -1,11 +1,20 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 const { KubeApi } = Renderer.K8sApi
 
 const KubeObject = Renderer.K8sApi.KubeObject
 const KubeObjectStore = Renderer.K8sApi.KubeObjectStore
 
-export class ImagePolicy extends KubeObject {
+export class ImagePolicy extends KubeObject<
+  any,
+  any,
+  {
+    imageRepositoryRef: {
+      name: string
+      namespace: string
+    }
+  }
+> {
   static readonly kind = 'ImagePolicy'
   static readonly namespaced = true
   static readonly apiBase = '/apis/image.toolkit.fluxcd.io/v1beta2/imagepolicies'

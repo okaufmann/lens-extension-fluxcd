@@ -19,7 +19,7 @@
     "directory": "fluxcd"
   },
   "engines": {
-    "lens": "^6.0.0"
+    "freelens": "^1.0"
   },
   "main": "dist/main.js",
   "renderer": "dist/renderer.js",
@@ -32,14 +32,14 @@
   },
   "dependencies": {
     "mobx": "^6.6.1",
-    "mobx-react": "^7.5.2",
-    "react-open-doodles": "^1.0.5"
+    "mobx-react": "^7.5.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@k8slens/extensions": "^5.5.4",
+    "@freelensapp/extensions": "^1.0.0",
+    "@freelensapp/kube-object": "^1.0.0",
     "@types/chart.js": "^2.9.37",
     "@types/node": "^16.0.0",
     "@types/react": "^16.9.35",

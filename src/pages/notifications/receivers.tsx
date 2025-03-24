@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 
 import { observer } from 'mobx-react'
 

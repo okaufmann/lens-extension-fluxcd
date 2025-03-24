@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { HelmChart } from '../../../k8s/fluxcd/sources/helmchart'
 import { getStatusClass, getStatusText, lowerAndPluralize } from '../../../utils'

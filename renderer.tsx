@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 
 import {
@@ -42,6 +42,15 @@ import { Receiver } from './src/k8s/fluxcd/notifications/receiver'
 import { fluxcdObjects } from './src/k8s/fluxcd/objects'
 
 import svgIcon from './src/icons/fluxcd.svg'
+import { HelmRelease } from './src/k8s/fluxcd/helm/helmrelease'
+import { GitRepository } from './src/k8s/fluxcd/sources/gitrepository'
+import { HelmRepository } from './src/k8s/fluxcd/sources/helmrepository'
+import { ImageUpdateAutomation } from './src/k8s/fluxcd/image-automation/imageupdateautomation'
+import { ImageRepository } from './src/k8s/fluxcd/image-automation/imagerepository'
+import { Provider } from './src/k8s/fluxcd/notifications/provider'
+import { Alert } from './src/k8s/fluxcd/notifications/alert'
+import { HelmChart } from './src/k8s/fluxcd/sources/helmchart'
+import { ImagePolicy } from './src/k8s/fluxcd/image-automation/imagepolicy'
 
 const {
   Component: { Icon },
@@ -82,7 +91,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['notification.toolkit.fluxcd.io/v1beta1', 'notification.toolkit.fluxcd.io/v1beta2'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDAlertDetails {...props} />,
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Alert>) => <FluxCDAlertDetails {...props} />,
       },
     },
     {
@@ -90,7 +99,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['notification.toolkit.fluxcd.io/v1beta1', 'notification.toolkit.fluxcd.io/v1beta2'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDProviderDetails {...props} />,
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Provider>) => <FluxCDProviderDetails {...props} />,
       },
     },
     {
@@ -98,7 +107,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['image.toolkit.fluxcd.io/v1beta1', 'image.toolkit.fluxcd.io/v1beta2'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<ImageRepository>) => (
           <FluxCDImageRepositoryDetails {...props} />
         ),
       },
@@ -108,7 +117,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['image.toolkit.fluxcd.io/v1beta1', 'image.toolkit.fluxcd.io/v1beta2'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<ImagePolicy>) => (
           <FluxCDImagePolicyDetails {...props} />
         ),
       },
@@ -118,7 +127,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['image.toolkit.fluxcd.io/v1beta1', 'image.toolkit.fluxcd.io/v1beta2'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<ImageUpdateAutomation>) => (
           <FluxCDImageUpdateAutomationDetails {...props} />
         ),
       },
@@ -132,7 +141,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       ],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => <FluxCDHelmChartDetails {...props} />,
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<HelmChart>) => <FluxCDHelmChartDetails {...props} />,
       },
     },
     {
@@ -144,7 +153,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       ],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<HelmRepository>) => (
           <FluxCDHelmRepositoryDetails {...props} />
         ),
       },
@@ -158,7 +167,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       ],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<GitRepository>) => (
           <FluxCDGitRepositoryDetails {...props} />
         ),
       },
@@ -168,7 +177,7 @@ export default class FluxCDExtension extends Renderer.LensExtension {
       apiVersions: ['helm.toolkit.fluxcd.io/v2beta1'],
       priority: 10,
       components: {
-        Details: (props: Renderer.Component.KubeObjectDetailsProps<Receiver>) => (
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<HelmRelease>) => (
           <FluxCDHelmReleaseDetails {...props} />
         ),
       },

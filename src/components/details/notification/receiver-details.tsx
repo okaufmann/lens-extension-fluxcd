@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { Receiver } from '../../../k8s/fluxcd/notifications/receiver'
 import { getStatusClass, getStatusText, lowerAndPluralize } from '../../../utils'
@@ -75,7 +75,7 @@ export class FluxCDReceiverDetails extends React.Component<
           ))}
         </DrawerItem>
         <DrawerItem name="Resources">
-          {object.spec.resources.map((resource: any, index: number) => (
+          {object.spec.resources.map((resource, index: number) => (
             <li key={index}>
               <a
                 href="#"

@@ -1,4 +1,4 @@
-import { Renderer } from '@k8slens/extensions'
+import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import { Alert } from '../../../k8s/fluxcd/notifications/alert'
 import { lowerAndPluralize } from '../../../utils'
@@ -73,7 +73,7 @@ export class FluxCDAlertDetails extends React.Component<
           </a>
         </DrawerItem>
         <DrawerItem name="Resources">
-          {object.spec.eventSources.map((eventSource: any, index: number) => (
+          {object.spec.eventSources.map((eventSource, index: number) => (
             <li key={index}>
               {eventSource.name === '*' ? (
                 <Badge label={`${eventSource.kind}:${eventSource.name}`} />

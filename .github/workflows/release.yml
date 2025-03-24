@@ -40,7 +40,7 @@ jobs:
           github-token: ${{ secrets.github_token }}
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}

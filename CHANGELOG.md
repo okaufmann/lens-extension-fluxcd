@@ -1,3 +1,21 @@
+## [1.10.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v2.0.0-beta.2...v1.10.1) (2025-03-24)
+
+
+### Bug Fixes
+
+* version constraint ([a716f19](https://github.com/okaufmann/lens-extension-fluxcd/commit/a716f19e1016c3c72fe6735829f72f1e14072eda))
+
+
+
+# [2.0.0-beta.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2025-02-27)
+
+
+### Bug Fixes
+
+* use k8s type form new package ([a55d1cf](https://github.com/okaufmann/lens-extension-fluxcd/commit/a55d1cf8d98aca9b712e82b8fbde63c451e35c45))
+
+
+
 # [1.10.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.2...v1.10.0) (2024-06-01)
 
 
@@ -13,34 +31,6 @@
 ### Bug Fixes
 
 * add npm install ([35f8c25](https://github.com/okaufmann/lens-extension-fluxcd/commit/35f8c256cdab93b73acbdb4445713b815e4b72fb))
-
-
-
-## [1.9.1](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.9.0...v1.9.1) (2023-12-18)
-
-
-### Bug Fixes
-
-* helm repository detail view for oci repos ([d82e1f3](https://github.com/okaufmann/lens-extension-fluxcd/commit/d82e1f37d6bbf6660c47fdbf5d77b5f822bd2ba8))
-* missing status property and use generic types ([a608fdb](https://github.com/okaufmann/lens-extension-fluxcd/commit/a608fdb680d2e593140cc46ef4e4ae578e5f0092))
-
-
-
-# [1.9.0](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.2...v1.9.0) (2023-10-28)
-
-
-### Features
-
-* add receiver's webhook path to searchable fields ([2868ab5](https://github.com/okaufmann/lens-extension-fluxcd/commit/2868ab5256ba38ec3c9dcaaf1901820ab2743fd0))
-
-
-
-## [1.8.2](https://github.com/okaufmann/lens-extension-fluxcd/compare/v1.8.1...v1.8.2) (2023-10-21)
-
-
-### Bug Fixes
-
-* build before publish ([4bcbcab](https://github.com/okaufmann/lens-extension-fluxcd/commit/4bcbcabf78e55144d50526acbb6105e5c2222c80))
 
 
 

@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -38,6 +42,7 @@ jobs:
         with:
           pre-commit: scripts/ci-pre-commit.js
           github-token: ${{ secrets.github_token }}
+          create-summary: true
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

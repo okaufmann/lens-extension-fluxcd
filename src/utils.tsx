@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { Renderer } from '@freelensapp/extensions'
-const KubeObject = Renderer.K8sApi.KubeObject
+// const KubeObject = Renderer.K8sApi.KubeObject
 
 /**
  * This function formats durations in a more human readable form.

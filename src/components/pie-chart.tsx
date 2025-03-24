@@ -1,4 +1,4 @@
-import { Renderer } from '@freelensapp/extensions'
+// import { Renderer } from '@freelensapp/extensions'
 import React from 'react'
 import './pie-chart.scss'
 // import { PieChartData } from '@freelensapp/extensions/dist/src/extensions/renderer-api/components'

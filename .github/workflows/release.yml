@@ -43,6 +43,7 @@ jobs:
           pre-commit: scripts/ci-pre-commit.js
           github-token: ${{ secrets.github_token }}
           create-summary: true
+          skip-on-empty: false
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -55,6 +56,7 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - name: Build
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
         run: |
           npm install
           npm run build
